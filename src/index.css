@@ -1,111 +1,102 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+/* DomEase: Global Styles */
+@import "tailwindcss";
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+/*
+  The DomEase palette and design tokens: Terracotta and Sage (brand book,
+  RTH-DOM-2026-BRAND-01, and the logo, RTH-DOM-2026-LOGO-01). This block is the
+  one source of every colour on the site. Tailwind turns each token into
+  utilities (`bg-clay-700`, `text-ink-2`, `border-line`, `rounded-r-card`) and
+  into a CSS variable on :root (`--color-clay-700`). Never type a raw hex in a
+  component. The Flutter app mirrors these names in lib/ui/core/themes/tokens.dart.
+*/
+@theme {
+  /* Clay: the brand. Logo house, headings, primary buttons, progress, the dark band */
+  --color-clay-950: #2a1005;
+  --color-clay-900: #461f0e;
+  --color-clay-800: #643119;
+  --color-clay-700: #874628; /* brand */
+  --color-clay-600: #a85e3d; /* the logo's tulip */
+  --color-clay-400: #d99679;
+  --color-clay-200: #eec6b5;
+  --color-clay-100: #f9e0d6;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Sage: beside it. Cleaning, the logo's leaves. Small marks only, never a whole panel */
+  --color-sage-800: #3c6548;
+  --color-sage-700: #53815f;
+  --color-sage-400: #8cb496;
+  --color-sage-200: #c0d7c5;
+  --color-sage-100: #dfece2;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+  /* Amber: only for action. Start free, Get the app, Premium. Nothing decorative */
+  --color-amber-800: #795101;
+  --color-amber-700: #9a6a12;
+  --color-amber-400: #cd9f5c;
+  --color-amber-200: #e7cda9;
+
+  /* Ink: warm greys for text. Contrast on paper: ink 14.0, ink-2 6.6, ink-3 3.0 : 1.
+     ink-2 is the lightest tone allowed for body text. */
+  --color-ink: #2d2520;
+  --color-ink-2: #635953;
+  --color-ink-3: #9a928c;
+
+  /* Surfaces and lines */
+  --color-paper: #f9f6f5;
+  --color-paper-2: #eee9e6;
+  --color-white: #ffffff;
+  --color-night: #19120e;
+  --color-night-card: #2a211c;
+  --color-night-line: #3a302a;
+  --color-night-text: #f4efec;
+  --color-night-tint: #4a2416;
+  --color-line: #d9d2ce;
+  --color-line-2: #b4aba6;
+
+  /* States: red only for low stock, always with an icon and a word */
+  --color-success: #53815f;
+  --color-danger: #b4342a;
+  --color-danger-100: #fbe3e0;
+
+  /* Type: Outfit for headings, Inter for interface text, IBM Plex Mono for Shillings.
+     Lustria is the logo's own face; the logo files carry it as outlines. */
+  --font-display: "Outfit", "Avenir Next", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Shape: soft, the warm register */
+  --radius-r-sm: 8px;
+  --radius-r-md: 12px;
+  --radius-r-card: 16px;
+  --radius-r-stage: 24px;
+  --radius-r-pill: 999px;
+
+  /* Elevation: warm, never grey */
+  --shadow-sh-1: 0 1px 2px rgb(45 37 32 / 0.06), 0 1px 1px rgb(45 37 32 / 0.04);
+  --shadow-sh-2: 0 8px 24px rgb(45 37 32 / 0.08);
+  --shadow-sh-3: 0 20px 48px rgb(45 37 32 / 0.14);
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
   }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
   }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
-}
-
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+  ::selection {
+    background: var(--color-clay-200);
+    color: var(--color-clay-900);
   }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
 }
