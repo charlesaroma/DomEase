@@ -13,8 +13,7 @@ export default function Hero() {
     <section className="relative overflow-hidden">
       <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 pt-14 pb-20 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:pt-20 lg:pb-28">
         <div>
-          <span className="inline-flex rounded-r-pill bg-clay-100 px-4 py-1.5 text-sm text-clay-800">{copy.chip}</span>
-          <h1 className="mt-6 text-[2.75rem] leading-[1.04] font-bold text-ink sm:text-6xl lg:text-7xl">
+          <h1 className="text-[2.75rem] leading-[1.04] font-bold text-ink sm:text-6xl lg:text-7xl">
             {copy.title} <span className="text-clay-700">{copy.accent}</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-2">{copy.body}</p>

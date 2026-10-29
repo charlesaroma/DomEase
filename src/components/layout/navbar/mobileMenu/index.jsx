@@ -1,16 +1,34 @@
 /* Mobile Menu */
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import site from "@/data/site.json";
 
 // The nav links on phones: a button that drops a panel under the header.
+// Closes on a link, Escape, a tap outside, or the screen widening past md.
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const rootRef = useRef(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    const onPointer = (e) => !rootRef.current?.contains(e.target) && setOpen(false);
+    const wide = window.matchMedia("(min-width: 48rem)");
+    const onWide = (e) => e.matches && setOpen(false);
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    wide.addEventListener("change", onWide);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+      wide.removeEventListener("change", onWide);
+    };
+  }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div ref={rootRef} className="md:hidden">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
