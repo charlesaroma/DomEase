@@ -1,0 +1,126 @@
+{
+  "home": {
+    "seo": {
+      "title": "DomEase | Homelife, eased.",
+      "description": "Plan meals, share the cleaning and keep one shopping list in Shillings, for everyone in the house. Built in Kampala, for Ugandan homes."
+    },
+    "hero": {
+      "chip": "Built in Kampala, for Ugandan homes",
+      "title": "Run the house without running",
+      "accent": "yourself ragged.",
+      "body": "DomEase keeps the three things that actually run a household in one place. What you are eating, what needs cleaning, and what has to be bought, in Shillings, shared with everyone who lives there.",
+      "primary": "Start free",
+      "secondary": "See a sample week",
+      "note": "Free to start. No card. Pay with mobile money when you upgrade."
+    },
+    "glance": [
+      { "value": "5", "label": "meal types planned for the whole week" },
+      { "value": "4", "label": "home zones, each with its own checklist" },
+      { "value": "1", "label": "shopping list the whole house shares" },
+      { "value": "UGX", "label": "prices first, with 12 currencies ready" }
+    ],
+    "habits": {
+      "eyebrow": "The three habits",
+      "title": "One app, because they are one problem",
+      "body": "What you cook decides what you buy. What you clean decides what runs out. DomEase joins them up, so the list writes itself.",
+      "items": [
+        {
+          "id": "meals",
+          "icon": "meals",
+          "title": "Meals",
+          "body": "Breakfast, lunch, dinner, snacks and pastries, planned Monday to Sunday. Every recipe scales to your household and comes with a full ingredient list.",
+          "points": ["Recipes for kids, adults and elders", "Can't find it at the market? A swap is suggested", "Swap the week's plan in one tap"]
+        },
+        {
+          "id": "clean",
+          "icon": "clean",
+          "title": "Clean",
+          "body": "Kitchen, bathroom, bedrooms and sitting room, each with its own tasks, set daily, weekly or monthly, and a streak to keep.",
+          "points": ["Edit the zones and tasks to fit your home", "See progress at a glance", "Running low on soap? It goes on the list"]
+        },
+        {
+          "id": "shop",
+          "icon": "shop",
+          "title": "Shop",
+          "body": "One combined list, filled from your meal plan and your cleaning zones, grouped the way you walk the market.",
+          "points": ["Produce, staples, dairy and household", "Low stock flagged before you run out", "Add anything by hand, tick it off as you go"]
+        }
+      ]
+    },
+    "sharing": {
+      "eyebrow": "Shared, not shouted about",
+      "title": "Everyone in the house sees the same thing",
+      "body": "Add the people who live there and the person who helps. Each one sees the zones they are responsible for, so nobody has to be reminded and nobody has to nag.",
+      "points": [
+        { "icon": "users", "text": "Household members with their own view" },
+        { "icon": "helper", "text": "House Help with zone access only" },
+        { "icon": "bell", "text": "Gentle nudges, not notifications all day" },
+        { "icon": "sync", "text": "One list, updated for everyone" }
+      ],
+      "note": "Household sharing is part of Premium."
+    },
+    "builtHere": {
+      "eyebrow": "Built here",
+      "title": "Shillings, not dollars",
+      "body": "Prices in Ugandan Shillings. Mobile money at checkout. Groundnuts, posho, matoke and sukuma wiki in the recipes from day one, rather than bolted on later. House Help treated as a role in the household, because that is how households here actually work.",
+      "payments": "MTN Mobile Money and Airtel Money"
+    },
+    "houseHelp": {
+      "eyebrow": "House Help",
+      "title": "Hiring help? Compare candidates fairly",
+      "body": "Eleven questions across four areas: fit and logistics, skills, reliability, and how they will get on with your household. DomEase turns the answers into a fit score and flags anything worth a second conversation.",
+      "guides": ["Recruitment guide with interview questions", "Orientation guide and printable checklist", "Appraisal guide for review season"],
+      "badge": "Premium"
+    },
+    "pricing": {
+      "eyebrow": "Pricing",
+      "title": "Free to run the house. Premium to run it your way.",
+      "body": "Everything you need for a full week of meals, cleaning and shopping is free. Premium adds the personal and the automatic.",
+      "free": {
+        "name": "Free",
+        "price": "UGX 0",
+        "period": "forever",
+        "cta": "Start free",
+        "items": [
+          "Full meal planner, all five meal types",
+          "Recipes with scaling and market swaps",
+          "Every cleaning zone and checklist",
+          "Combined shopping list",
+          "Currency converter",
+          "Suggest your own recipes",
+          "Supported by ads"
+        ]
+      },
+      "premium": {
+        "name": "Premium",
+        "price": null,
+        "pricePending": "Price at launch",
+        "period": "monthly or yearly, by mobile money",
+        "cta": "Get Premium",
+        "items": [
+          "No ads",
+          "House Help: vetting questionnaire and guides",
+          "Household sharing for everyone at home",
+          "Allergy profiles for each member",
+          "Birthday, Christmas, Easter and Eid menus",
+          "Healthier pastry swaps",
+          "Diabetic and PCOS friendly meal ideas",
+          "Favourites, eating trends and budget insights",
+          "Automatic weekly planning"
+        ],
+        "disclaimer": "Dietary suggestions are general guidance, not medical advice."
+      }
+    },
+    "closing": {
+      "title": "Start with one week",
+      "body": "Plan seven days of meals, set up your zones, and see what the list looks like. It takes about ten minutes and costs nothing.",
+      "cta": "Coming soon to Google Play",
+      "note": "Android first. iPhone to follow."
+    }
+  },
+  "notFound": {
+    "title": "This room is empty",
+    "body": "The page you were looking for is not here. Head back home and pick up where you left off.",
+    "cta": "Back home"
+  }
+}

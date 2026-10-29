@@ -1,0 +1,15 @@
+{
+  "name": "DomEase",
+  "legalName": "Domestic Ease",
+  "tagline": "Homelife, eased.",
+  "valueLine": "Save time · Save money · Simplify home",
+  "url": "https://domease.app",
+  "nav": [
+    { "label": "Meals", "to": "/#meals" },
+    { "label": "Clean", "to": "/#clean" },
+    { "label": "Shop", "to": "/#shop" },
+    { "label": "Pricing", "to": "/#pricing" }
+  ],
+  "cta": { "label": "Get the app", "to": "/#get-the-app" },
+  "builtBy": { "name": "Raijin Tech Hub Co. Ltd (SMC)", "url": "https://www.raijintechhub.com" }
+}

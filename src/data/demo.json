@@ -1,0 +1,44 @@
+{
+  "today": {
+    "date": "Saturday, 3 October",
+    "household": 4,
+    "tonight": { "name": "Groundnut stew", "side": "with posho and sukuma" },
+    "week": [
+      { "label": "Meals planned", "done": 10, "of": 12 },
+      { "label": "Zones cleared", "done": 2, "of": 5 },
+      { "label": "List bought", "done": 14, "of": 19 }
+    ],
+    "list": { "total": "UGX 46,500", "low": 3 }
+  },
+  "zones": [
+    { "name": "Kitchen", "who": "Betty", "pct": 100 },
+    { "name": "Bathroom", "who": "Mary", "pct": 35 },
+    { "name": "Sitting room", "who": "Betty", "pct": 60 },
+    { "name": "Bedrooms", "who": null, "pct": 0 },
+    { "name": "Compound", "who": "Prossy", "pct": 80 }
+  ],
+  "shop": {
+    "total": "UGX 46,500",
+    "count": 19,
+    "items": [
+      { "name": "Groundnuts, 1 kg", "price": "8,000", "low": true, "done": true },
+      { "name": "Posho, 2 kg", "price": "6,500", "low": false, "done": true },
+      { "name": "Sukuma wiki", "price": "2,000", "low": false, "done": false },
+      { "name": "Tomatoes, 1 kg", "price": "5,000", "low": true, "done": false },
+      { "name": "Cooking oil, 1 L", "price": "12,000", "low": false, "done": false },
+      { "name": "Soap, 3 bars", "price": "7,500", "low": false, "done": false },
+      { "name": "Charcoal, 1 sack", "price": "5,500", "low": true, "done": false }
+    ]
+  },
+  "candidate": {
+    "name": "Candidate A",
+    "score": 82,
+    "sections": [
+      { "label": "Fit and logistics", "pct": 90 },
+      { "label": "Skills and experience", "pct": 85 },
+      { "label": "Reliability and trust", "pct": 80 },
+      { "label": "Household compatibility", "pct": 70 }
+    ],
+    "flag": "Prefers not to cover the compound"
+  }
+}
