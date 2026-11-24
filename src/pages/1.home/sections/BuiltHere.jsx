@@ -13,10 +13,10 @@ const items = demo.shop.items.filter((i) => i.name !== "Sukuma wiki" && i.name !
 export default function BuiltHere() {
   return (
     <section id="shop-list" className="bg-white">
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 py-24 lg:grid-cols-2 lg:px-8">
-        <div>
+      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)] items-center gap-14 px-5 py-24 lg:grid-cols-2 lg:px-8">
+        <div className="min-w-0">
           <SectionHeading eyebrow={copy.eyebrow} title={copy.title} body={copy.body} />
-          <p className="mt-8 inline-flex items-center gap-2.5 rounded-r-pill border border-line px-4 py-2 text-[15px] text-ink-2">
+          <p className="mt-8 inline-flex max-w-full items-center gap-2.5 rounded-r-pill border border-line px-4 py-2 text-[15px] text-ink-2">
             <Smartphone className="size-4 text-clay-700" strokeWidth={1.75} aria-hidden="true" />
             {copy.payments}
           </p>
