@@ -11,5 +11,6 @@
     { "label": "Pricing", "to": "/#pricing" }
   ],
   "cta": { "label": "Get the app", "to": "/#get-the-app" },
+  "webApp": { "label": "Sign in", "to": "/app" },
   "builtBy": { "name": "Raijin Tech Hub Co. Ltd (SMC)", "url": "https://www.raijintechhub.com" }
 }

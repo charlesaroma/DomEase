@@ -22,6 +22,10 @@ export default function Navbar() {
           ))}
         </ul>
         <div className="flex items-center gap-1">
+          {/* The web app: the same home as on the phone */}
+          <Link to={site.webApp.to} className="mr-2 hidden font-display text-[15px] font-medium text-ink-2 transition-colors hover:text-clay-700 sm:inline">
+            {site.webApp.label}
+          </Link>
           <Button to={site.cta.to} variant="action" className="h-10 px-3.5 text-sm whitespace-nowrap min-[360px]:px-4 sm:h-11 sm:px-6 sm:text-[15px]">
             {site.cta.label}
           </Button>
