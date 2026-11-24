@@ -2,13 +2,20 @@
 import {
   Banknote,
   BookOpen,
+  FileText,
   HandHeart,
+  History,
+  House,
   Inbox,
   LayoutDashboard,
+  LifeBuoy,
   Megaphone,
+  MonitorPlay,
+  ReceiptText,
   Settings,
-  House,
   ShieldCheck,
+  Tags,
+  UsersRound,
 } from "lucide-react";
 
 /**
@@ -22,7 +29,7 @@ export const ADMIN_NAV = [
     items: [{ to: "/admin", label: "Overview", icon: LayoutDashboard, perm: "overview", end: true }],
   },
   {
-    id: "content",
+    id: "recipes",
     label: "Recipes",
     items: [
       { to: "/admin/suggestions", label: "Suggestions", icon: Inbox, perm: "suggestions", badge: "pendingSuggestions" },
@@ -31,25 +38,42 @@ export const ADMIN_NAV = [
   },
   {
     id: "people",
-    label: "Households",
+    label: "People",
     items: [
+      { to: "/admin/users", label: "Users", icon: UsersRound, perm: "users" },
       { to: "/admin/households", label: "Households", icon: House, perm: "households" },
+    ],
+  },
+  {
+    id: "money",
+    label: "Money",
+    items: [
       { to: "/admin/subscriptions", label: "Subscriptions", icon: Banknote, perm: "subscriptions", badge: "pastDue" },
+      { to: "/admin/transactions", label: "Transactions", icon: ReceiptText, perm: "transactions", badge: "failedPayments" },
+      { to: "/admin/ads", label: "Ads", icon: MonitorPlay, perm: "ads" },
     ],
   },
   {
     id: "app",
     label: "The app",
     items: [
+      { to: "/admin/prices", label: "Market prices", icon: Tags, perm: "prices" },
       { to: "/admin/house-help", label: "House Help", icon: HandHeart, perm: "house-help" },
-      { to: "/admin/content", label: "Nudges, zones and rates", icon: Megaphone, perm: "content" },
+      { to: "/admin/content", label: "App content", icon: Megaphone, perm: "content" },
+      { to: "/admin/legal", label: "Legal pages", icon: FileText, perm: "legal" },
     ],
+  },
+  {
+    id: "support",
+    label: "Support",
+    items: [{ to: "/admin/inbox", label: "Inbox", icon: LifeBuoy, perm: "inbox", badge: "openReports" }],
   },
   {
     id: "admin",
     label: "Admin",
     items: [
       { to: "/admin/team", label: "Team", icon: ShieldCheck, perm: "team" },
+      { to: "/admin/activity", label: "Activity log", icon: History, perm: "activity" },
       { to: "/admin/settings", label: "Settings", icon: Settings, perm: "settings" },
     ],
   },
@@ -79,4 +103,11 @@ export const OCCASIONS = [
 ];
 export const HOUSEHOLD_TYPES = { family: "Family", couple: "Couple", bachelor: "Bachelor", single_parent: "Single parent" };
 export const ROLES = { owner: "Owner", admin: "Admin", moderator: "Moderator" };
+export const RECIPE_STATUS = {
+  published: { label: "Live", tone: "good" },
+  draft: { label: "Draft", tone: "quiet" },
+  archived: { label: "Archived", tone: "warn" },
+};
+export const PROVIDERS = { mtn: "MTN Mobile Money", airtel: "Airtel Money" };
+export const SIGN_IN = { google: "Google", apple: "Apple", email: "Email", phone: "Phone" };
 

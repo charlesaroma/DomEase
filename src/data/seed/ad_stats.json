@@ -1,0 +1,846 @@
+{
+  "source": "demo",
+  "currency": "USD",
+  "rows": [
+    {
+      "date": "2026-10-25",
+      "placement": "today",
+      "impressions": 399,
+      "clicks": 3,
+      "earningsUsd": 0.17
+    },
+    {
+      "date": "2026-10-25",
+      "placement": "meals",
+      "impressions": 311,
+      "clicks": 2,
+      "earningsUsd": 0.12
+    },
+    {
+      "date": "2026-10-25",
+      "placement": "clean",
+      "impressions": 226,
+      "clicks": 2,
+      "earningsUsd": 0.07
+    },
+    {
+      "date": "2026-10-25",
+      "placement": "shop",
+      "impressions": 316,
+      "clicks": 6,
+      "earningsUsd": 0.18
+    },
+    {
+      "date": "2026-10-26",
+      "placement": "today",
+      "impressions": 424,
+      "clicks": 3,
+      "earningsUsd": 0.18
+    },
+    {
+      "date": "2026-10-26",
+      "placement": "meals",
+      "impressions": 396,
+      "clicks": 2,
+      "earningsUsd": 0.14
+    },
+    {
+      "date": "2026-10-26",
+      "placement": "clean",
+      "impressions": 238,
+      "clicks": 1,
+      "earningsUsd": 0.1
+    },
+    {
+      "date": "2026-10-26",
+      "placement": "shop",
+      "impressions": 345,
+      "clicks": 6,
+      "earningsUsd": 0.19
+    },
+    {
+      "date": "2026-10-27",
+      "placement": "today",
+      "impressions": 513,
+      "clicks": 4,
+      "earningsUsd": 0.21
+    },
+    {
+      "date": "2026-10-27",
+      "placement": "meals",
+      "impressions": 334,
+      "clicks": 3,
+      "earningsUsd": 0.14
+    },
+    {
+      "date": "2026-10-27",
+      "placement": "clean",
+      "impressions": 233,
+      "clicks": 1,
+      "earningsUsd": 0.08
+    },
+    {
+      "date": "2026-10-27",
+      "placement": "shop",
+      "impressions": 345,
+      "clicks": 7,
+      "earningsUsd": 0.23
+    },
+    {
+      "date": "2026-10-28",
+      "placement": "today",
+      "impressions": 438,
+      "clicks": 4,
+      "earningsUsd": 0.16
+    },
+    {
+      "date": "2026-10-28",
+      "placement": "meals",
+      "impressions": 463,
+      "clicks": 3,
+      "earningsUsd": 0.18
+    },
+    {
+      "date": "2026-10-28",
+      "placement": "clean",
+      "impressions": 248,
+      "clicks": 2,
+      "earningsUsd": 0.08
+    },
+    {
+      "date": "2026-10-28",
+      "placement": "shop",
+      "impressions": 278,
+      "clicks": 6,
+      "earningsUsd": 0.18
+    },
+    {
+      "date": "2026-10-29",
+      "placement": "today",
+      "impressions": 440,
+      "clicks": 4,
+      "earningsUsd": 0.17
+    },
+    {
+      "date": "2026-10-29",
+      "placement": "meals",
+      "impressions": 356,
+      "clicks": 3,
+      "earningsUsd": 0.15
+    },
+    {
+      "date": "2026-10-29",
+      "placement": "clean",
+      "impressions": 247,
+      "clicks": 1,
+      "earningsUsd": 0.1
+    },
+    {
+      "date": "2026-10-29",
+      "placement": "shop",
+      "impressions": 363,
+      "clicks": 8,
+      "earningsUsd": 0.21
+    },
+    {
+      "date": "2026-10-30",
+      "placement": "today",
+      "impressions": 433,
+      "clicks": 3,
+      "earningsUsd": 0.14
+    },
+    {
+      "date": "2026-10-30",
+      "placement": "meals",
+      "impressions": 440,
+      "clicks": 4,
+      "earningsUsd": 0.19
+    },
+    {
+      "date": "2026-10-30",
+      "placement": "clean",
+      "impressions": 261,
+      "clicks": 2,
+      "earningsUsd": 0.09
+    },
+    {
+      "date": "2026-10-30",
+      "placement": "shop",
+      "impressions": 354,
+      "clicks": 8,
+      "earningsUsd": 0.22
+    },
+    {
+      "date": "2026-10-31",
+      "placement": "today",
+      "impressions": 424,
+      "clicks": 3,
+      "earningsUsd": 0.14
+    },
+    {
+      "date": "2026-10-31",
+      "placement": "meals",
+      "impressions": 489,
+      "clicks": 5,
+      "earningsUsd": 0.21
+    },
+    {
+      "date": "2026-10-31",
+      "placement": "clean",
+      "impressions": 251,
+      "clicks": 2,
+      "earningsUsd": 0.08
+    },
+    {
+      "date": "2026-10-31",
+      "placement": "shop",
+      "impressions": 326,
+      "clicks": 8,
+      "earningsUsd": 0.22
+    },
+    {
+      "date": "2026-11-01",
+      "placement": "today",
+      "impressions": 442,
+      "clicks": 3,
+      "earningsUsd": 0.17
+    },
+    {
+      "date": "2026-11-01",
+      "placement": "meals",
+      "impressions": 351,
+      "clicks": 3,
+      "earningsUsd": 0.15
+    },
+    {
+      "date": "2026-11-01",
+      "placement": "clean",
+      "impressions": 293,
+      "clicks": 2,
+      "earningsUsd": 0.1
+    },
+    {
+      "date": "2026-11-01",
+      "placement": "shop",
+      "impressions": 375,
+      "clicks": 9,
+      "earningsUsd": 0.21
+    },
+    {
+      "date": "2026-11-02",
+      "placement": "today",
+      "impressions": 509,
+      "clicks": 4,
+      "earningsUsd": 0.22
+    },
+    {
+      "date": "2026-11-02",
+      "placement": "meals",
+      "impressions": 506,
+      "clicks": 5,
+      "earningsUsd": 0.2
+    },
+    {
+      "date": "2026-11-02",
+      "placement": "clean",
+      "impressions": 273,
+      "clicks": 2,
+      "earningsUsd": 0.11
+    },
+    {
+      "date": "2026-11-02",
+      "placement": "shop",
+      "impressions": 341,
+      "clicks": 8,
+      "earningsUsd": 0.21
+    },
+    {
+      "date": "2026-11-03",
+      "placement": "today",
+      "impressions": 462,
+      "clicks": 3,
+      "earningsUsd": 0.15
+    },
+    {
+      "date": "2026-11-03",
+      "placement": "meals",
+      "impressions": 450,
+      "clicks": 4,
+      "earningsUsd": 0.15
+    },
+    {
+      "date": "2026-11-03",
+      "placement": "clean",
+      "impressions": 278,
+      "clicks": 1,
+      "earningsUsd": 0.09
+    },
+    {
+      "date": "2026-11-03",
+      "placement": "shop",
+      "impressions": 298,
+      "clicks": 5,
+      "earningsUsd": 0.19
+    },
+    {
+      "date": "2026-11-04",
+      "placement": "today",
+      "impressions": 478,
+      "clicks": 4,
+      "earningsUsd": 0.18
+    },
+    {
+      "date": "2026-11-04",
+      "placement": "meals",
+      "impressions": 490,
+      "clicks": 5,
+      "earningsUsd": 0.19
+    },
+    {
+      "date": "2026-11-04",
+      "placement": "clean",
+      "impressions": 235,
+      "clicks": 2,
+      "earningsUsd": 0.09
+    },
+    {
+      "date": "2026-11-04",
+      "placement": "shop",
+      "impressions": 314,
+      "clicks": 7,
+      "earningsUsd": 0.19
+    },
+    {
+      "date": "2026-11-05",
+      "placement": "today",
+      "impressions": 516,
+      "clicks": 5,
+      "earningsUsd": 0.17
+    },
+    {
+      "date": "2026-11-05",
+      "placement": "meals",
+      "impressions": 487,
+      "clicks": 4,
+      "earningsUsd": 0.16
+    },
+    {
+      "date": "2026-11-05",
+      "placement": "clean",
+      "impressions": 292,
+      "clicks": 3,
+      "earningsUsd": 0.1
+    },
+    {
+      "date": "2026-11-05",
+      "placement": "shop",
+      "impressions": 335,
+      "clicks": 7,
+      "earningsUsd": 0.19
+    },
+    {
+      "date": "2026-11-06",
+      "placement": "today",
+      "impressions": 476,
+      "clicks": 4,
+      "earningsUsd": 0.2
+    },
+    {
+      "date": "2026-11-06",
+      "placement": "meals",
+      "impressions": 388,
+      "clicks": 4,
+      "earningsUsd": 0.16
+    },
+    {
+      "date": "2026-11-06",
+      "placement": "clean",
+      "impressions": 229,
+      "clicks": 2,
+      "earningsUsd": 0.09
+    },
+    {
+      "date": "2026-11-06",
+      "placement": "shop",
+      "impressions": 314,
+      "clicks": 4,
+      "earningsUsd": 0.21
+    },
+    {
+      "date": "2026-11-07",
+      "placement": "today",
+      "impressions": 497,
+      "clicks": 4,
+      "earningsUsd": 0.19
+    },
+    {
+      "date": "2026-11-07",
+      "placement": "meals",
+      "impressions": 546,
+      "clicks": 6,
+      "earningsUsd": 0.19
+    },
+    {
+      "date": "2026-11-07",
+      "placement": "clean",
+      "impressions": 222,
+      "clicks": 1,
+      "earningsUsd": 0.1
+    },
+    {
+      "date": "2026-11-07",
+      "placement": "shop",
+      "impressions": 442,
+      "clicks": 8,
+      "earningsUsd": 0.29
+    },
+    {
+      "date": "2026-11-08",
+      "placement": "today",
+      "impressions": 619,
+      "clicks": 6,
+      "earningsUsd": 0.25
+    },
+    {
+      "date": "2026-11-08",
+      "placement": "meals",
+      "impressions": 483,
+      "clicks": 3,
+      "earningsUsd": 0.17
+    },
+    {
+      "date": "2026-11-08",
+      "placement": "clean",
+      "impressions": 233,
+      "clicks": 2,
+      "earningsUsd": 0.08
+    },
+    {
+      "date": "2026-11-08",
+      "placement": "shop",
+      "impressions": 374,
+      "clicks": 5,
+      "earningsUsd": 0.23
+    },
+    {
+      "date": "2026-11-09",
+      "placement": "today",
+      "impressions": 674,
+      "clicks": 6,
+      "earningsUsd": 0.22
+    },
+    {
+      "date": "2026-11-09",
+      "placement": "meals",
+      "impressions": 496,
+      "clicks": 5,
+      "earningsUsd": 0.16
+    },
+    {
+      "date": "2026-11-09",
+      "placement": "clean",
+      "impressions": 238,
+      "clicks": 2,
+      "earningsUsd": 0.09
+    },
+    {
+      "date": "2026-11-09",
+      "placement": "shop",
+      "impressions": 485,
+      "clicks": 10,
+      "earningsUsd": 0.31
+    },
+    {
+      "date": "2026-11-10",
+      "placement": "today",
+      "impressions": 479,
+      "clicks": 3,
+      "earningsUsd": 0.19
+    },
+    {
+      "date": "2026-11-10",
+      "placement": "meals",
+      "impressions": 517,
+      "clicks": 4,
+      "earningsUsd": 0.18
+    },
+    {
+      "date": "2026-11-10",
+      "placement": "clean",
+      "impressions": 313,
+      "clicks": 2,
+      "earningsUsd": 0.11
+    },
+    {
+      "date": "2026-11-10",
+      "placement": "shop",
+      "impressions": 357,
+      "clicks": 8,
+      "earningsUsd": 0.22
+    },
+    {
+      "date": "2026-11-11",
+      "placement": "today",
+      "impressions": 701,
+      "clicks": 7,
+      "earningsUsd": 0.23
+    },
+    {
+      "date": "2026-11-11",
+      "placement": "meals",
+      "impressions": 537,
+      "clicks": 5,
+      "earningsUsd": 0.18
+    },
+    {
+      "date": "2026-11-11",
+      "placement": "clean",
+      "impressions": 303,
+      "clicks": 2,
+      "earningsUsd": 0.1
+    },
+    {
+      "date": "2026-11-11",
+      "placement": "shop",
+      "impressions": 401,
+      "clicks": 6,
+      "earningsUsd": 0.23
+    },
+    {
+      "date": "2026-11-12",
+      "placement": "today",
+      "impressions": 556,
+      "clicks": 4,
+      "earningsUsd": 0.21
+    },
+    {
+      "date": "2026-11-12",
+      "placement": "meals",
+      "impressions": 480,
+      "clicks": 5,
+      "earningsUsd": 0.2
+    },
+    {
+      "date": "2026-11-12",
+      "placement": "clean",
+      "impressions": 308,
+      "clicks": 3,
+      "earningsUsd": 0.12
+    },
+    {
+      "date": "2026-11-12",
+      "placement": "shop",
+      "impressions": 510,
+      "clicks": 8,
+      "earningsUsd": 0.35
+    },
+    {
+      "date": "2026-11-13",
+      "placement": "today",
+      "impressions": 561,
+      "clicks": 6,
+      "earningsUsd": 0.23
+    },
+    {
+      "date": "2026-11-13",
+      "placement": "meals",
+      "impressions": 457,
+      "clicks": 3,
+      "earningsUsd": 0.16
+    },
+    {
+      "date": "2026-11-13",
+      "placement": "clean",
+      "impressions": 290,
+      "clicks": 2,
+      "earningsUsd": 0.12
+    },
+    {
+      "date": "2026-11-13",
+      "placement": "shop",
+      "impressions": 443,
+      "clicks": 7,
+      "earningsUsd": 0.31
+    },
+    {
+      "date": "2026-11-14",
+      "placement": "today",
+      "impressions": 516,
+      "clicks": 5,
+      "earningsUsd": 0.22
+    },
+    {
+      "date": "2026-11-14",
+      "placement": "meals",
+      "impressions": 441,
+      "clicks": 3,
+      "earningsUsd": 0.15
+    },
+    {
+      "date": "2026-11-14",
+      "placement": "clean",
+      "impressions": 375,
+      "clicks": 2,
+      "earningsUsd": 0.14
+    },
+    {
+      "date": "2026-11-14",
+      "placement": "shop",
+      "impressions": 487,
+      "clicks": 10,
+      "earningsUsd": 0.27
+    },
+    {
+      "date": "2026-11-15",
+      "placement": "today",
+      "impressions": 754,
+      "clicks": 7,
+      "earningsUsd": 0.26
+    },
+    {
+      "date": "2026-11-15",
+      "placement": "meals",
+      "impressions": 447,
+      "clicks": 3,
+      "earningsUsd": 0.17
+    },
+    {
+      "date": "2026-11-15",
+      "placement": "clean",
+      "impressions": 311,
+      "clicks": 2,
+      "earningsUsd": 0.11
+    },
+    {
+      "date": "2026-11-15",
+      "placement": "shop",
+      "impressions": 536,
+      "clicks": 14,
+      "earningsUsd": 0.29
+    },
+    {
+      "date": "2026-11-16",
+      "placement": "today",
+      "impressions": 613,
+      "clicks": 6,
+      "earningsUsd": 0.24
+    },
+    {
+      "date": "2026-11-16",
+      "placement": "meals",
+      "impressions": 525,
+      "clicks": 4,
+      "earningsUsd": 0.22
+    },
+    {
+      "date": "2026-11-16",
+      "placement": "clean",
+      "impressions": 387,
+      "clicks": 4,
+      "earningsUsd": 0.17
+    },
+    {
+      "date": "2026-11-16",
+      "placement": "shop",
+      "impressions": 416,
+      "clicks": 6,
+      "earningsUsd": 0.28
+    },
+    {
+      "date": "2026-11-17",
+      "placement": "today",
+      "impressions": 576,
+      "clicks": 4,
+      "earningsUsd": 0.2
+    },
+    {
+      "date": "2026-11-17",
+      "placement": "meals",
+      "impressions": 663,
+      "clicks": 6,
+      "earningsUsd": 0.25
+    },
+    {
+      "date": "2026-11-17",
+      "placement": "clean",
+      "impressions": 353,
+      "clicks": 3,
+      "earningsUsd": 0.12
+    },
+    {
+      "date": "2026-11-17",
+      "placement": "shop",
+      "impressions": 408,
+      "clicks": 9,
+      "earningsUsd": 0.24
+    },
+    {
+      "date": "2026-11-18",
+      "placement": "today",
+      "impressions": 548,
+      "clicks": 4,
+      "earningsUsd": 0.19
+    },
+    {
+      "date": "2026-11-18",
+      "placement": "meals",
+      "impressions": 672,
+      "clicks": 5,
+      "earningsUsd": 0.28
+    },
+    {
+      "date": "2026-11-18",
+      "placement": "clean",
+      "impressions": 385,
+      "clicks": 2,
+      "earningsUsd": 0.15
+    },
+    {
+      "date": "2026-11-18",
+      "placement": "shop",
+      "impressions": 460,
+      "clicks": 8,
+      "earningsUsd": 0.25
+    },
+    {
+      "date": "2026-11-19",
+      "placement": "today",
+      "impressions": 757,
+      "clicks": 6,
+      "earningsUsd": 0.29
+    },
+    {
+      "date": "2026-11-19",
+      "placement": "meals",
+      "impressions": 627,
+      "clicks": 6,
+      "earningsUsd": 0.23
+    },
+    {
+      "date": "2026-11-19",
+      "placement": "clean",
+      "impressions": 276,
+      "clicks": 3,
+      "earningsUsd": 0.1
+    },
+    {
+      "date": "2026-11-19",
+      "placement": "shop",
+      "impressions": 503,
+      "clicks": 13,
+      "earningsUsd": 0.27
+    },
+    {
+      "date": "2026-11-20",
+      "placement": "today",
+      "impressions": 719,
+      "clicks": 5,
+      "earningsUsd": 0.3
+    },
+    {
+      "date": "2026-11-20",
+      "placement": "meals",
+      "impressions": 578,
+      "clicks": 6,
+      "earningsUsd": 0.19
+    },
+    {
+      "date": "2026-11-20",
+      "placement": "clean",
+      "impressions": 401,
+      "clicks": 2,
+      "earningsUsd": 0.13
+    },
+    {
+      "date": "2026-11-20",
+      "placement": "shop",
+      "impressions": 482,
+      "clicks": 10,
+      "earningsUsd": 0.33
+    },
+    {
+      "date": "2026-11-21",
+      "placement": "today",
+      "impressions": 756,
+      "clicks": 8,
+      "earningsUsd": 0.31
+    },
+    {
+      "date": "2026-11-21",
+      "placement": "meals",
+      "impressions": 529,
+      "clicks": 4,
+      "earningsUsd": 0.23
+    },
+    {
+      "date": "2026-11-21",
+      "placement": "clean",
+      "impressions": 410,
+      "clicks": 3,
+      "earningsUsd": 0.16
+    },
+    {
+      "date": "2026-11-21",
+      "placement": "shop",
+      "impressions": 427,
+      "clicks": 11,
+      "earningsUsd": 0.27
+    },
+    {
+      "date": "2026-11-22",
+      "placement": "today",
+      "impressions": 761,
+      "clicks": 6,
+      "earningsUsd": 0.31
+    },
+    {
+      "date": "2026-11-22",
+      "placement": "meals",
+      "impressions": 625,
+      "clicks": 4,
+      "earningsUsd": 0.25
+    },
+    {
+      "date": "2026-11-22",
+      "placement": "clean",
+      "impressions": 339,
+      "clicks": 3,
+      "earningsUsd": 0.12
+    },
+    {
+      "date": "2026-11-22",
+      "placement": "shop",
+      "impressions": 524,
+      "clicks": 10,
+      "earningsUsd": 0.36
+    },
+    {
+      "date": "2026-11-23",
+      "placement": "today",
+      "impressions": 667,
+      "clicks": 4,
+      "earningsUsd": 0.28
+    },
+    {
+      "date": "2026-11-23",
+      "placement": "meals",
+      "impressions": 647,
+      "clicks": 5,
+      "earningsUsd": 0.24
+    },
+    {
+      "date": "2026-11-23",
+      "placement": "clean",
+      "impressions": 387,
+      "clicks": 3,
+      "earningsUsd": 0.16
+    },
+    {
+      "date": "2026-11-23",
+      "placement": "shop",
+      "impressions": 612,
+      "clicks": 14,
+      "earningsUsd": 0.4
+    }
+  ]
+}

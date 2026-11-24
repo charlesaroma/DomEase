@@ -1,0 +1,74 @@
+[
+  {
+    "id": "rep_001",
+    "topic": "problem",
+    "message": "The shopping list total does not change when I switch to KES.",
+    "status": "open",
+    "appVersion": "1.0.1",
+    "platform": "ios",
+    "userId": "usr_001",
+    "userName": "Sarah Namukasa",
+    "email": "sarah.namukasa@example.com",
+    "createdAt": "2026-11-23T08:00:00Z"
+  },
+  {
+    "id": "rep_002",
+    "topic": "idea",
+    "message": "Please add a Luganda version, my mother would use it more.",
+    "status": "open",
+    "appVersion": "1.0.0",
+    "platform": "ios",
+    "userId": "usr_003",
+    "userName": "Grace Atim",
+    "email": "grace.atim@example.com",
+    "createdAt": "2026-11-21T06:00:00Z"
+  },
+  {
+    "id": "rep_003",
+    "topic": "problem",
+    "message": "Mobile money prompt never came on Airtel. Tried twice.",
+    "status": "answered",
+    "appVersion": "1.0.0",
+    "platform": "android",
+    "userId": "usr_005",
+    "userName": "Esther Nabirye",
+    "email": "esther.nabirye@example.com",
+    "createdAt": "2026-11-19T09:00:00Z"
+  },
+  {
+    "id": "rep_004",
+    "topic": "idea",
+    "message": "Can we have photos of the food? Hard to know what some dishes are.",
+    "status": "open",
+    "appVersion": "1.0.0",
+    "platform": "android",
+    "userId": "usr_007",
+    "userName": "Ruth Akello",
+    "email": "ruth.akello@example.com",
+    "createdAt": "2026-11-17T02:00:00Z"
+  },
+  {
+    "id": "rep_005",
+    "topic": "problem",
+    "message": "My house help cannot see the cleaning list after joining.",
+    "status": "closed",
+    "appVersion": "1.0.0",
+    "platform": "ios",
+    "userId": "usr_009",
+    "userName": "Agnes Nansubuga",
+    "email": "agnes.nansubuga@example.com",
+    "createdAt": "2026-11-15T03:00:00Z"
+  },
+  {
+    "id": "rep_006",
+    "topic": "idea",
+    "message": "A weekly reminder on Sunday to plan meals would help.",
+    "status": "answered",
+    "appVersion": "1.0.0",
+    "platform": "ios",
+    "userId": "usr_011",
+    "userName": "Faith Kemigisha",
+    "email": "faith.kemigisha@example.com",
+    "createdAt": "2026-11-13T02:00:00Z"
+  }
+]

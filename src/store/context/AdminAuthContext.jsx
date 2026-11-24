@@ -7,9 +7,12 @@ import { authApi } from "../services";
  * Who is signed in to the admin, and what their role may do. Roles (PRD 7.2):
  *   owner      everything, including team and settings
  *   admin      everything but removing the owner
- *   moderator  recipes, suggestions and content only
+ *   moderator  recipes, suggestions, app content, prices and the support inbox
+ * Some actions inside a page are narrower still: see `canDo`.
  */
-const MODERATOR = new Set(["overview", "suggestions", "recipes", "house-help", "content"]);
+const MODERATOR = new Set(["overview", "suggestions", "recipes", "house-help", "content", "prices", "inbox"]);
+// Actions only the owner may take, wherever they appear.
+const OWNER_ONLY = new Set(["refund"]);
 
 const AdminAuthContext = createContext(null);
 
@@ -41,8 +44,9 @@ export function AdminAuthProvider({ children }) {
   }, []);
 
   const can = useCallback((module) => !!user && (user.role !== "moderator" || MODERATOR.has(module)), [user]);
+  const canDo = useCallback((action) => !!user && (!OWNER_ONLY.has(action) || user.role === "owner"), [user]);
 
-  const value = useMemo(() => ({ user, ready, signIn, signOut, can }), [user, ready, signIn, signOut, can]);
+  const value = useMemo(() => ({ user, ready, signIn, signOut, can, canDo }), [user, ready, signIn, signOut, can, canDo]);
   return <AdminAuthContext.Provider value={value}>{children}</AdminAuthContext.Provider>;
 }
 

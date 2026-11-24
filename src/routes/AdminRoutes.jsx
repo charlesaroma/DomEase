@@ -9,11 +9,18 @@ import PermissionGate from "@/AdminDashboard/components/PermissionGate";
 const MODULES = [
   ["suggestions", "suggestions", P.Suggestions],
   ["recipes", "recipes", P.Recipes],
+  ["users", "users", P.Users],
   ["households", "households", P.Households],
   ["subscriptions", "subscriptions", P.Subscriptions],
+  ["transactions", "transactions", P.Transactions],
+  ["ads", "ads", P.Ads],
+  ["prices", "prices", P.Prices],
   ["house-help", "house-help", P.HouseHelp],
   ["content", "content", P.Content],
+  ["legal", "legal", P.Legal],
+  ["inbox", "inbox", P.Inbox],
   ["team", "team", P.Team],
+  ["activity", "activity", P.Activity],
   ["settings", "settings", P.Settings],
 ];
 

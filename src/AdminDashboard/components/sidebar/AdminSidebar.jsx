@@ -54,7 +54,14 @@ export default function AdminSidebar({ open, onClose }) {
                       <item.icon className="size-[18px]" strokeWidth={1.75} aria-hidden="true" />
                       <span className="flex-1">{item.label}</span>
                       {count > 0 && (
-                        <span className="rounded-r-pill bg-clay-700 px-2 py-0.5 text-xs font-semibold text-white">{count}</span>
+                        <span
+                          className={cn(
+                            "rounded-r-pill px-2 py-0.5 text-xs font-semibold",
+                            item.badgeTone === "quiet" ? "bg-paper-2 text-ink-2" : "bg-clay-700 text-white",
+                          )}
+                        >
+                          {count}
+                        </span>
                       )}
                     </NavLink>
                   );

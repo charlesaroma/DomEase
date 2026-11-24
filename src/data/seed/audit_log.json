@@ -1,0 +1,47 @@
+[
+  {
+    "id": "log_005",
+    "at": "2026-11-22T10:12:00Z",
+    "actorId": "team_2",
+    "actorName": "Charles Aroma",
+    "action": "settings.update",
+    "target": "Settings",
+    "detail": "Changed the support email"
+  },
+  {
+    "id": "log_004",
+    "at": "2026-11-20T14:40:00Z",
+    "actorId": "team_1",
+    "actorName": "Pearl",
+    "action": "household.premium",
+    "target": "Esther Nabirye",
+    "detail": "Gave Premium by hand: paid but the aggregator missed the callback"
+  },
+  {
+    "id": "log_003",
+    "at": "2026-11-18T08:05:00Z",
+    "actorId": "team_3",
+    "actorName": "Content moderator",
+    "action": "recipe.publish",
+    "target": "Chicken stew with sweet potatoes",
+    "detail": "Published from a suggestion"
+  },
+  {
+    "id": "log_002",
+    "at": "2026-11-12T16:30:00Z",
+    "actorId": "team_1",
+    "actorName": "Pearl",
+    "action": "payment.refund",
+    "target": "FLW-946335",
+    "detail": "Charged twice, one refunded"
+  },
+  {
+    "id": "log_001",
+    "at": "2026-11-02T09:00:00Z",
+    "actorId": "team_2",
+    "actorName": "Charles Aroma",
+    "action": "team.add",
+    "target": "Content moderator",
+    "detail": "Added as moderator"
+  }
+]

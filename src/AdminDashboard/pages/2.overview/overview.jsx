@@ -1,10 +1,11 @@
 /* Overview */
-import { ArrowRight, BookOpen, Crown, House, Inbox } from "lucide-react";
+import { ArrowRight, BookOpen, Crown, House, ImageOff, Inbox, LifeBuoy, MonitorPlay, UsersRound, Wallet } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { useAdminAuth } from "@/store/context/AdminAuthContext";
 import { useHouseholds, useOverview, useSuggestions } from "@/store/queries/admin";
 
+import BarChart from "../../components/BarChart";
 import PageHeader from "../../components/PageHeader";
 import Panel from "../../components/Panel";
 import StatCard from "../../components/StatCard";
@@ -26,6 +27,10 @@ export default function Overview() {
   const revenue = price == null ? null : (o?.monthly ?? 0) * price + ((o?.yearly ?? 0) * (yearly ?? 0)) / 12;
   const premiumShare = o ? Math.round((o.premium / Math.max(o.households, 1)) * 100) : 0;
   const maxType = Math.max(1, ...(o?.byType ?? []).map((t) => t.count));
+  const day = (d) => new Date(`${d}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
+  const signups = (o?.daily ?? []).map((d) => ({ key: d.date, label: day(d.date), value: d.signups }));
+  const takings = (o?.daily ?? []).map((d) => ({ key: d.date, label: day(d.date), value: d.revenue }));
+  const usd = (n) => `$${n.toFixed(2)}`;
 
   return (
     <>
@@ -35,7 +40,52 @@ export default function Overview() {
         <StatCard label="Households" value={o?.households ?? "…"} note={o ? `${o.newThisWeek} joined this week` : " "} icon={House} />
         <StatCard label="On Premium" value={o?.premium ?? "…"} note={`${premiumShare}% of households`} icon={Crown} />
         <StatCard label="Suggestions waiting" value={o?.pendingSuggestions ?? "…"} note="Recipes sent in by households" icon={Inbox} tone="sage" />
-        <StatCard label="Recipes live" value={o?.recipes ?? "…"} note="Across five meal types" icon={BookOpen} tone="sage" />
+        <StatCard label="Recipes live" value={o?.recipes ?? "…"} note={o ? `${o.premiumRecipes} of them Premium` : " "} icon={BookOpen} tone="sage" />
+      </div>
+
+      <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <Link to="/admin/users">
+          <StatCard label="Accounts" value={o?.users ?? "…"} note={o ? `${o.newUsersThisWeek} new this week` : " "} icon={UsersRound} />
+        </Link>
+        <Link to="/admin/transactions">
+          <StatCard
+            label="Paid this month"
+            value={o ? money(o.revenueThisMonth) : "…"}
+            note={o?.failedPayments ? `${o.failedPayments} failed this week` : "No failed payments this week"}
+            icon={Wallet}
+            tone="good"
+          />
+        </Link>
+        <Link to="/admin/ads?tab=performance">
+          <StatCard
+            label="Ads, last 30 days"
+            value={o ? usd(o.adEarnings30) : "…"}
+            note={o?.adSource === "demo" ? "Example figures until AdMob is connected" : "From AdMob"}
+            icon={MonitorPlay}
+            tone="sage"
+          />
+        </Link>
+        <Link to={o?.missingPhotos ? "/admin/recipes?photo=missing" : "/admin/inbox"}>
+          {o?.missingPhotos ? (
+            <StatCard label="Recipes without a photo" value={o.missingPhotos} note="Add one: photos get dishes cooked" icon={ImageOff} tone="warn" />
+          ) : (
+            <StatCard label="Open in the inbox" value={o?.openReports ?? "…"} note="Problems and ideas from the app" icon={LifeBuoy} />
+          )}
+        </Link>
+      </div>
+
+      <div className="mt-6 grid gap-6 lg:grid-cols-2">
+        <Panel title="New accounts a day, last 30 days">
+          <BarChart data={signups} format={(n) => Math.round(n).toLocaleString("en-GB")} title="New accounts a day, last 30 days" height={160} />
+        </Panel>
+        <Panel title="Money in a day, last 30 days (UGX)">
+          <BarChart
+            data={takings}
+            format={(n) => (n >= 1000 ? `${Math.round(n / 1000)}k` : String(Math.round(n)))}
+            title="Premium payments a day in shillings, last 30 days"
+            height={160}
+          />
+        </Panel>
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1.4fr_1fr]">

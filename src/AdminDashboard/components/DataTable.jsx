@@ -71,6 +71,8 @@ function pageList(index, count) {
  * `filters`: [{ id, label, options: [{ value, label }], test(row, value) }]
  * `bulkActions(ids, clear)` renders buttons for the selected rows.
  * `rowActions(row)` returns [{ label, onClick, danger, hidden }].
+ * `renderBody(rows)` draws the page's rows another way (a photo grid) while
+ * keeping the same search, filters and paging.
  */
 export default function DataTable({
   rows = NONE,
@@ -90,8 +92,10 @@ export default function DataTable({
   empty: emptyText = "Nothing here yet.",
   initialSort,
   rowLabel,
+  renderBody,
 }) {
-  const [globalFilter, setGlobalFilter] = useState("");
+  // A link can arrive searched: /admin/users?q=Sarah
+  const [globalFilter, setGlobalFilter] = useState(() => new URLSearchParams(window.location.search).get("q") ?? "");
   const [sorting, setSorting] = useState(() => (initialSort ? [{ id: initialSort.id, desc: !!initialSort.desc }] : []));
   const [rowSelection, setRowSelection] = useState({});
   const [pagination, setPagination] = useState(() => ({ pageIndex: 0, pageSize: storedSize() }));
@@ -361,8 +365,10 @@ export default function DataTable({
         </div>
       )}
 
+      {renderBody && <div className="p-4">{renderBody(pageRows.map((r) => r.original), loading)}</div>}
+
       {/* Table, md and up */}
-      <div className="hidden overflow-x-auto md:block">
+      <div className={cn("hidden overflow-x-auto", !renderBody && "md:block")}>
         <table className="w-full border-collapse text-left text-[15px]" aria-busy={loading}>
           <thead>
             {table.getHeaderGroups().map((group) => (
@@ -432,7 +438,7 @@ export default function DataTable({
       </div>
 
       {/* Cards, below md */}
-      <ul className="divide-y divide-line md:hidden" aria-busy={loading}>
+      <ul className={cn("divide-y divide-line md:hidden", renderBody && "hidden")} aria-busy={loading}>
         {loading && Array.from({ length: 3 }, (_, i) => <li key={i} className="m-4 h-16 animate-pulse rounded-r-md bg-paper-2" />)}
         {!loading &&
           pageRows.map((row) => {
@@ -463,7 +469,7 @@ export default function DataTable({
           })}
       </ul>
 
-      {!loading && !filtered.length && (
+      {!loading && !filtered.length && !renderBody && (
         <div className="px-4 py-12 text-center text-ink-2">
           <p>{rows.length ? "Nothing matches. Try another search or filter." : emptyText}</p>
           {rows.length > 0 && (globalFilter || activeCount > 0) && (
