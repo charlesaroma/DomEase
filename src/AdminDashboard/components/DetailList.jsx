@@ -9,7 +9,7 @@ export default function DetailList({ items }) {
         .map(([k, v]) => (
           <div key={k} className="flex justify-between gap-6 py-3">
             <dt className="shrink-0 text-ink-2">{k}</dt>
-            <dd className="min-w-0 text-right break-words">{v ?? "—"}</dd>
+            <dd className="min-w-0 text-right break-words">{v ?? "Not given"}</dd>
           </div>
         ))}
     </dl>

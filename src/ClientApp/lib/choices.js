@@ -62,7 +62,7 @@ export const FREQ_LABEL = { daily: "Daily", weekly: "Weekly", monthly: "Monthly"
 
 /** "UGX 46,500" in the household's currency, no decimals for shillings. */
 export function money(amount, currency = "UGX") {
-  if (amount == null) return "—";
+  if (amount == null) return "Not priced";
   const digits = ["UGX", "KES", "TZS", "NGN", "INR"].includes(currency) ? 0 : 2;
   return `${currency} ${Number(amount).toLocaleString("en-GB", { minimumFractionDigits: digits, maximumFractionDigits: digits })}`;
 }

@@ -51,7 +51,7 @@ export default function Convert() {
         </button>
         <div className="grid grid-cols-[1fr_auto] items-center gap-2">
           <output className="font-display text-3xl font-bold" aria-live="polite">
-            {out == null ? "—" : money(out, to)}
+            {out == null ? "Choose two currencies" : money(out, to)}
           </output>
           {select(to, setTo, "To")}
         </div>
