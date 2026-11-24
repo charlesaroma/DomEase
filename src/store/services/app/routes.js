@@ -1,0 +1,31 @@
+/* App Routes */
+// The endpoints the mobile app calls (docs/05-api-contract.md). The web app
+// calls the same ones, with the household's own token.
+export const appRoutes = {
+  auth: { signIn: "/auth/email/sign-in", signUp: "/auth/email/sign-up", forgot: "/auth/password/forgot" },
+  me: "/me",
+  household: "/households/me",
+  invite: "/households/me/invite",
+  join: "/households/join",
+  leave: "/households/me/leave",
+  mealPlan: "/households/me/meal-plan",
+  zones: "/households/me/zones",
+  shopping: "/households/me/shopping",
+  favourites: "/households/me/favourites",
+  checkout: "/subscriptions/checkout",
+  recipes: "/recipes",
+  suggestions: "/recipe-suggestions",
+  prices: "/prices",
+  currencies: "/currencies",
+  nudges: "/nudges",
+  settings: "/settings/app",
+  faqs: "/faqs",
+  premiumFeatures: "/premium-features",
+  occasions: "/occasions",
+  zonePresets: "/zone-presets",
+  questions: "/house-help/questions",
+  guides: "/house-help/guides",
+  score: "/house-help/score",
+  support: "/support/reports",
+  adEvents: "/ads/events",
+};
