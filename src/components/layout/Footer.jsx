@@ -1,6 +1,7 @@
 /* Footer */
 import { Link } from "react-router-dom";
 
+import { legalPages } from "@/data/legal";
 import site from "@/data/site.json";
 
 import Logo from "./navbar/Logo";
@@ -10,7 +11,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-night text-night-text">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 pt-14 pb-10 md:grid-cols-[1.5fr_1fr_1fr] lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 pt-14 pb-10 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr] lg:px-8">
         <div>
           <Logo tone="dark" />
           <p className="mt-4 max-w-xs text-[15px] leading-relaxed text-night-text/70">{site.tagline} Meals, cleaning and one shared shopping list, for Ugandan homes.</p>
@@ -36,6 +37,23 @@ export default function Footer() {
               </Link>
             </li>
             <li className="text-[15px] text-night-text/60">Android first, iPhone to follow</li>
+          </ul>
+        </div>
+        <div>
+          <p className="text-xs font-medium tracking-[0.18em] text-clay-400 uppercase">Legal</p>
+          <ul className="mt-4 space-y-2.5">
+            {legalPages.map(({ path, doc }) => (
+              <li key={path}>
+                <Link to={`/${path}`} className="text-[15px] text-night-text/80 hover:text-white">
+                  {doc.title}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link to="/delete-account" className="text-[15px] text-night-text/80 hover:text-white">
+                Delete your account
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
