@@ -4,7 +4,7 @@ import { Route } from "react-router-dom";
 import SiteLayout from "./SiteLayout";
 import { legalPages } from "@/data/legal";
 
-import { DeleteAccount, Home, Legal, NotFound } from "./pages";
+import { Brand, DeleteAccount, Home, Legal, NotFound } from "./pages";
 
 export default function siteRoutes() {
   return (
@@ -14,6 +14,7 @@ export default function siteRoutes() {
         <Route key={path} path={path} element={<Legal doc={doc} />} />
       ))}
       <Route path="delete-account" element={<DeleteAccount />} />
+      <Route path="brand" element={<Brand />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   );

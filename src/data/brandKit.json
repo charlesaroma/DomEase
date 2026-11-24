@@ -1,0 +1,26 @@
+{
+  "cards": [
+    { "file": "/og-image.png", "label": "Home", "path": "/" },
+    { "file": "/og-terms.png", "label": "Terms of Use", "path": "/terms" },
+    { "file": "/og-privacy.png", "label": "Privacy Policy", "path": "/privacy" },
+    { "file": "/og-premium-terms.png", "label": "Premium and payments", "path": "/premium-terms" },
+    { "file": "/og-health-notice.png", "label": "Health and dietary notice", "path": "/health-notice" },
+    { "file": "/og-delete-account.png", "label": "Delete your account", "path": "/delete-account" }
+  ],
+  "icons": [
+    { "file": "/favicon-16x16.png", "label": "Favicon", "size": 16, "note": "Simplified cut: no veins or small leaves, heavier lines" },
+    { "file": "/favicon-32x32.png", "label": "Favicon", "size": 32, "note": "Browser tabs and bookmarks" },
+    { "file": "/favicon-48x48.png", "label": "Favicon", "size": 48, "note": "Windows and search results" },
+    { "file": "/apple-touch-icon.png", "label": "iPhone home screen", "size": 180, "note": "Square; iOS rounds the corners" },
+    { "file": "/icons/icon-192.png", "label": "Android and installed web app", "size": 192, "note": "Rounded" },
+    { "file": "/icons/icon-maskable-512.png", "label": "Android adaptive", "size": 512, "note": "Mark inside the safe circle", "maskable": true },
+    { "file": "/icons/mstile-150x150.png", "label": "Windows tile", "size": 150, "note": "Full bleed" },
+    { "file": "/safari-pinned-tab.svg", "label": "Safari pinned tab", "size": 64, "note": "One colour; Safari fills it with clay", "mono": true }
+  ],
+  "splash": [
+    { "file": "/splash/splash-1179x2556.png", "label": "iPhone 15 and 16" },
+    { "file": "/splash/splash-1320x2868.png", "label": "iPhone 16 Pro Max" },
+    { "file": "/splash/splash-750x1334.png", "label": "iPhone SE" },
+    { "file": "/splash/splash-2048x2732.png", "label": "iPad Pro 12.9 inch" }
+  ]
+}

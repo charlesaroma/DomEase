@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-line/70 bg-white/90 backdrop-blur">
       <nav className="relative mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-5 lg:px-8" aria-label="Main">
-        <Logo />
+        <Logo intro />
         <ul className="hidden items-center gap-8 md:flex">
           {site.nav.map((item) => (
             <li key={item.label}>
@@ -22,7 +22,7 @@ export default function Navbar() {
           ))}
         </ul>
         <div className="flex items-center gap-1">
-          <Button to={site.cta.to} variant="action" className="h-10 px-4 text-sm sm:h-11 sm:px-6 sm:text-[15px]">
+          <Button to={site.cta.to} variant="action" className="h-10 px-3.5 text-sm whitespace-nowrap min-[360px]:px-4 sm:h-11 sm:px-6 sm:text-[15px]">
             {site.cta.label}
           </Button>
           <MobileMenu />
