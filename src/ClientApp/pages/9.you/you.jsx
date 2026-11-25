@@ -1,5 +1,5 @@
 /* You */
-import { ChevronRight, Crown, FileText, HandHeart, House, LifeBuoy, LogOut, Settings } from "lucide-react";
+import { ChartColumn, ChevronRight, Crown, FileText, HandHeart, House, LifeBuoy, LogOut, Settings } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -25,7 +25,8 @@ export default function You() {
     [
       ["Home", "/app/you/household", House, household?.name],
       ["Premium", "/app/premium", Crown, premium ? "Active" : "See what it adds"],
-      ["House Help", "/app/house-help", HandHeart],
+      ["Insights", "/app/insights", ChartColumn, "Budget, eating trends"],
+      ["House Help", "/app/house-help", HandHeart, "Vet, pay, guides"],
     ],
     [
       ["Settings", "/app/you/settings", Settings, "Currency, reminders"],

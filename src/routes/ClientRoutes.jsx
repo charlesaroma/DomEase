@@ -55,6 +55,7 @@ export default function clientRoutes() {
         <Route path="shop" element={<P.Shop />} />
         <Route path="house-help" element={<P.HouseHelp />} />
         <Route path="premium" element={<P.Premium />} />
+        <Route path="insights" element={<P.Insights />} />
         <Route path="you" element={<P.You />} />
         <Route path="you/household" element={<P.HouseholdPage />} />
         <Route path="you/settings" element={<P.SettingsPage />} />

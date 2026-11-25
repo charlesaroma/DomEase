@@ -43,6 +43,9 @@ Zones are the household's own: `PUT /households/me/zones` saves added, renamed, 
 | GET | `/recipes` | Published recipes only, with `photo`, `gallery` and `isPremium` (below) | `recipes.json` |
 | GET / PUT | `/households/me/meal-plan` | `{ seed, premium, days: { breakfast: [recipeId × 7], lunch: […], … }, createdAt }`. Premium recipes are only planned for Premium homes | |
 | GET / PUT | `/households/me/favourites` | `[recipeId]`. Premium only | |
+| GET | `/households/me/meal-plan/history` | `[{ weekOf, days }]`, oldest first. Each time the plan is replaced the server keeps the old week (the last 12), for Eating trends | |
+| GET / PUT | `/households/me/budget` | `{ monthly, trips: [Trip] }`. Every home can record trips; the Insights screen is Premium | |
+| GET / PUT | `/households/me/staff` | `[Staff]`, who helps at home and their pay. Premium only | |
 | POST | `/recipe-suggestions` | `{ name, ingredientsRaw, methodRaw, suggestedMealType? }` | |
 | GET / PUT | `/households/me/zones` | Zones with tasks and consumables | `zone_templates.json` |
 | GET / PUT | `/households/me/shopping` | `{ checked: [itemId], manual: [{ id, name, category, quantity, price }] }` | |
@@ -94,6 +97,10 @@ The server is the source of truth for the plan (FR-MZ-1) and the fit score (FR-H
 Never store the full number or a PIN. **User** (`users.json`) is one per account: `{ id, name, email, phone, signInMethod, householdId, householdRole, status: active | disabled | deleted, createdAt, lastActiveAt }`.
 
 **Ad placement** (`ad_placements.json`): `{ id: today | meals | clean | shop, label, format: banner | native, enabled, admobAndroid, admobIos, adsenseSlot, frequencyCapPerDay }`. Never full screen or video (FR-AD-2). **Sponsored product** (`sponsored.json`): `{ id, brand, product, headline, image, link, screens, matchItems, startsAt, endsAt, active, views, taps }`. **Ad stats** (`ad_stats.json`): `{ source: "admob" | "demo", currency: "USD", rows: [{ date, placement, impressions, clicks, earningsUsd }] }`, filled by the server from the AdMob Reporting API.
+
+**Trip** (Done shopping on Shop): `{ id, date, estimate, actual, items }`. `estimate` is what the ticked items came to on the price table, `actual` what was paid, both in the household's currency.
+
+**Staff** (House Help, Pay): `{ id, name, role, salary, payday (1 to 31; later than the month's last day means the last day), startedOn, entries: [{ id, date, kind: pay | advance | deduction | bonus | leave, amount, days, note }] }`. `amount` for money entries, `days` for leave. What is still owed for a month is salary plus bonuses less advances, deductions and pay in that month; `src/ClientApp/lib/insights.js` (`payMonth`) is the reference. This is private to the household: never shown in the admin beyond counts.
 
 **Activity log** (`audit_log.json`): `{ id, at, actorId, actorName, action, target, detail }`, written by the server, never edited.
 

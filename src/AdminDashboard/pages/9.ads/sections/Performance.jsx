@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import { useAdPlacements, useAdStats } from "@/store/queries/admin";
 import { cn } from "@/utils/cn";
 
-import BarChart from "../../../components/BarChart";
+import BarChart from "@/components/charts/BarChart";
 import Panel from "../../../components/Panel";
 import StatCard from "../../../components/StatCard";
 

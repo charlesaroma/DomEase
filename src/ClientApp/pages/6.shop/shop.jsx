@@ -1,9 +1,10 @@
 /* Shop */
-import { Plus, RotateCcw, X } from "lucide-react";
+import { Check, Plus, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Button from "@/components/ui/Button";
-import { useSaveShopping } from "@/store/queries/app";
+import { useBudget, useHousehold, useSaveShopping } from "@/store/queries/app";
 import { cn } from "@/utils/cn";
 
 import AdSlot from "../../components/AdSlot";
@@ -11,7 +12,10 @@ import Screen from "../../components/Screen";
 import Sheet, { TextField } from "../../components/Sheet";
 import { useToast } from "../../components/Toast";
 import { money } from "../../lib/choices";
+import { budgetSummary } from "../../lib/insights";
 import { useShoppingList } from "../../lib/useHome";
+
+import DoneShopping from "./sections/DoneShopping";
 
 const SOURCE = { meal: "For meals", zone: "Running low", manual: "Added by you" };
 
@@ -25,6 +29,11 @@ export default function Shop() {
   const save = useSaveShopping();
   const toast = useToast();
   const [adding, setAdding] = useState(false);
+  const [finishing, setFinishing] = useState(false);
+  const { data: household } = useHousehold();
+  const { data: budget } = useBudget();
+  const premium = household?.tier === "premium";
+  const month = budget ? budgetSummary(budget) : null;
 
   const toggle = (id) => save.mutate({ ...state, checked: state.checked.includes(id) ? state.checked.filter((x) => x !== id) : [...state.checked, id] });
   const removeManual = (item) => {
@@ -32,12 +41,6 @@ export default function Shop() {
     save.mutate({ checked: state.checked.filter((x) => x !== item.id), manual: state.manual.filter((m) => m.id !== item.id) });
     toast(`${item.name} removed.`, { undo: () => save.mutate(before) });
   };
-  const newTrip = () => {
-    const before = state;
-    save.mutate({ ...state, checked: [] });
-    toast("A fresh trip: every tick cleared.", { undo: () => save.mutate(before) });
-  };
-
   const groups = items.reduce((g, i) => ((g[i.category] ??= []).push(i), g), {});
   const done = items.filter((i) => i.checked).length;
   const low = items.filter((i) => i.low && !i.checked).length;
@@ -48,8 +51,8 @@ export default function Shop() {
       title="Shop"
       actions={
         <>
-          <Button variant="ghost" onClick={newTrip} disabled={!done} aria-label="New trip">
-            <RotateCcw className="size-4" /> <span className="hidden sm:inline">New trip</span>
+          <Button variant="ghost" onClick={() => setFinishing(true)} disabled={!done} aria-label="Done shopping">
+            <Check className="size-4" /> <span className="hidden sm:inline">Done shopping</span>
           </Button>
           <Button onClick={() => setAdding(true)} aria-label="Add item">
             <Plus className="size-4" /> <span className="hidden sm:inline">Add item</span>
@@ -64,6 +67,19 @@ export default function Shop() {
           {done} of {items.length} items
           {low > 0 && ` · ${low} running low`}
         </p>
+        {premium && month?.budget ? (
+          <Link to="/app/insights" className="mt-4 block border-t border-white/20 pt-4 text-sm text-clay-100 hover:text-white">
+            <span className="flex justify-between">
+              <span>Spent this month</span>
+              <span className="tabular-nums">
+                {money(month.spent, currency)} of {money(month.budget, currency)}
+              </span>
+            </span>
+            <span className="mt-2 block h-1.5 overflow-hidden rounded-full bg-white/20">
+              <span className="block h-full rounded-full bg-white" style={{ width: `${Math.min(100, month.percent)}%` }} />
+            </span>
+          </Link>
+        ) : null}
       </section>
 
       {loading && <p className="text-ink-2">Loading</p>}
@@ -102,6 +118,8 @@ export default function Shop() {
           </section>
         ))}
       </div>
+
+      <DoneShopping open={finishing} onClose={() => setFinishing(false)} items={items} state={state} currency={currency} premium={premium} />
 
       <AddItem
         open={adding}

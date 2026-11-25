@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useAdminAuth } from "@/store/context/AdminAuthContext";
 import { useHouseholds, useOverview, useSuggestions } from "@/store/queries/admin";
 
-import BarChart from "../../components/BarChart";
+import BarChart from "@/components/charts/BarChart";
 import PageHeader from "../../components/PageHeader";
 import Panel from "../../components/Panel";
 import StatCard from "../../components/StatCard";

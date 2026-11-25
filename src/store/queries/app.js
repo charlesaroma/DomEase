@@ -3,7 +3,7 @@
 // content (recipes, prices, FAQs…) is cached for a few minutes, as the phone does.
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { contentApi, favouritesApi, householdApi, planApi, sendApi, shoppingApi, zonesApi } from "../services/app";
+import { budgetApi, contentApi, favouritesApi, householdApi, planApi, planHistoryApi, sendApi, shoppingApi, staffApi, zonesApi } from "../services/app";
 
 export const appKeys = {
   household: ["app", "household"],
@@ -11,6 +11,9 @@ export const appKeys = {
   zones: ["app", "zones"],
   shopping: ["app", "shopping"],
   favourites: ["app", "favourites"],
+  planHistory: ["app", "planHistory"],
+  budget: ["app", "budget"],
+  staff: ["app", "staff"],
   content: (name) => ["app", "content", name],
 };
 
@@ -34,6 +37,9 @@ export const usePlan = () => useQuery({ queryKey: appKeys.plan, queryFn: planApi
 export const useZones = () => useQuery({ queryKey: appKeys.zones, queryFn: zonesApi.get });
 export const useShopping = () => useQuery({ queryKey: appKeys.shopping, queryFn: shoppingApi.get });
 export const useFavourites = () => useQuery({ queryKey: appKeys.favourites, queryFn: favouritesApi.get });
+export const usePlanHistory = () => useQuery({ queryKey: appKeys.planHistory, queryFn: planHistoryApi.get });
+export const useBudget = () => useQuery({ queryKey: appKeys.budget, queryFn: budgetApi.get });
+export const useStaff = () => useQuery({ queryKey: appKeys.staff, queryFn: staffApi.get });
 
 /**
  * A write that shows straight away: the cache is set to the new value first,
@@ -58,6 +64,8 @@ export const useSavePlan = () => useOptimistic(appKeys.plan, planApi.save);
 export const useSaveZones = () => useOptimistic(appKeys.zones, zonesApi.save);
 export const useSaveShopping = () => useOptimistic(appKeys.shopping, shoppingApi.save);
 export const useSaveFavourites = () => useOptimistic(appKeys.favourites, favouritesApi.save);
+export const useSaveBudget = () => useOptimistic(appKeys.budget, budgetApi.save);
+export const useSaveStaff = () => useOptimistic(appKeys.staff, staffApi.save);
 
 function useHouseholdWrite(fn) {
   const qc = useQueryClient();

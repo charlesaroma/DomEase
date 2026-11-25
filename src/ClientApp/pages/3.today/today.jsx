@@ -1,16 +1,17 @@
 /* Today */
-import { ArrowLeftRight, ArrowRight, Crown, HandHeart, Leaf, ShoppingBasket } from "lucide-react";
+import { ArrowLeftRight, ArrowRight, CalendarDays, ChartColumn, Crown, HandHeart, Leaf, ShoppingBasket } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import RecipePhoto from "@/components/recipes/RecipePhoto";
 import { useMember } from "@/store/context/MemberAuthContext";
-import { useAppNudges, useHousehold, useSaveZones, useZones } from "@/store/queries/app";
+import { useAppNudges, useHousehold, useSaveZones, useStaff, useZones } from "@/store/queries/app";
 import { totalMinutes } from "@/utils/recipes";
 
 import AdSlot from "../../components/AdSlot";
 import Screen from "../../components/Screen";
 import { money } from "../../lib/choices";
 import { DAYS, isDue, todayIndex } from "../../lib/home";
+import { daysUntil, nextPayday, payMonth } from "../../lib/insights";
 import { useShoppingList, useWeek } from "../../lib/useHome";
 
 /**
@@ -30,6 +31,11 @@ export default function Today() {
   const nudge = nudges.length ? nudges[Math.floor(now.getTime() / 864e5) % nudges.length] : null;
   const dinner = days?.dinner?.[d] && byId[days.dinner[d]];
   const premium = household?.tier === "premium";
+  const { data: staff = [] } = useStaff();
+  // Payday in the next three days with pay still owed (Premium, House Help pay).
+  const paydays = premium
+    ? staff.map((p) => ({ p, days: daysUntil(nextPayday(p, now), now), owed: payMonth(p).owed })).filter((x) => x.days <= 3 && x.owed > 0)
+    : [];
 
   const due = zones.flatMap((z) => z.tasks.filter((t) => isDue(t, now)).map((t) => ({ ...t, zone: z })));
   const planned = days ? Object.values(days).reduce((n, ids) => n + ids.length, 0) : 0;
@@ -47,6 +53,19 @@ export default function Today() {
           <Leaf className="mt-0.5 size-5 shrink-0" aria-hidden="true" /> {nudge.text}
         </p>
       )}
+
+      {paydays.map(({ p, days, owed }) => (
+        <Link key={p.id} to="/app/house-help?tab=pay" className="mb-6 flex items-center gap-4 rounded-r-card bg-amber-200/50 p-4 hover:bg-amber-200/80">
+          <CalendarDays className="size-6 shrink-0 text-amber-800" aria-hidden="true" />
+          <span className="flex-1">
+            <span className="block font-semibold text-amber-800">
+              {p.name}'s payday is {days === 0 ? "today" : days === 1 ? "tomorrow" : `in ${days} days`}
+            </span>
+            <span className="text-sm text-ink-2">{money(owed, currency)} still to pay this month.</span>
+          </span>
+          <ArrowRight className="size-5 text-amber-800" />
+        </Link>
+      ))}
 
       <div className="grid gap-6 md:grid-cols-2">
         {/* Tonight */}
@@ -116,16 +135,21 @@ export default function Today() {
         </Link>
 
         {/* Tools */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-3 gap-3 sm:gap-4">
           <Link to="/app/convert" className="rounded-r-card bg-white p-5 shadow-sh-1 hover:shadow-sh-2">
             <ArrowLeftRight className="size-6 text-clay-700" aria-hidden="true" />
             <span className="mt-3 block font-semibold">Convert</span>
-            <span className="text-sm text-ink-2">Between currencies</span>
+            <span className="text-sm text-ink-2">Currencies</span>
           </Link>
           <Link to="/app/house-help" className="rounded-r-card bg-white p-5 shadow-sh-1 hover:shadow-sh-2">
             <HandHeart className="size-6 text-clay-700" aria-hidden="true" />
             <span className="mt-3 block font-semibold">House Help</span>
-            <span className="text-sm text-ink-2">{premium ? "Vet and guides" : "Premium"}</span>
+            <span className="text-sm text-ink-2">{premium ? "Vet, pay" : "Premium"}</span>
+          </Link>
+          <Link to="/app/insights" className="rounded-r-card bg-white p-5 shadow-sh-1 hover:shadow-sh-2">
+            <ChartColumn className="size-6 text-clay-700" aria-hidden="true" />
+            <span className="mt-3 block font-semibold">Insights</span>
+            <span className="text-sm text-ink-2">{premium ? "Budget, trends" : "Premium"}</span>
           </Link>
         </div>
       </div>
@@ -139,7 +163,7 @@ export default function Today() {
           <Crown className="size-6 shrink-0 text-amber-800" aria-hidden="true" />
           <span className="flex-1">
             <span className="block font-semibold text-amber-800">Share DomEase with everyone at home</span>
-            <span className="text-sm text-ink-2">Premium adds sharing, House Help, allergy profiles and no ads.</span>
+            <span className="text-sm text-ink-2">Premium adds sharing, a food budget, House Help pay, allergy profiles and no ads.</span>
           </span>
           <ArrowRight className="size-5 text-amber-800" />
         </Link>

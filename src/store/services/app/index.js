@@ -4,7 +4,7 @@
 // data the household lives in demo/home.js and content comes from the admin's
 // demo database, so what the admin publishes is what the web app shows, and
 // what a household sends (a payment, a suggestion, a report) reaches the admin.
-import { scoreCandidate } from "@/ClientApp/lib/home";
+import { planAll, scoreCandidate } from "@/ClientApp/lib/home";
 
 import { http, makeTokenStore } from "../api/client";
 import { db, newId, now, reply } from "../demo/db";
@@ -187,6 +187,51 @@ function demoHousehold() {
   });
   return home.get().accounts.find((x) => x.id === a.id);
 }
+/**
+ * The demo home's history, so budget, trends and pay have something to show:
+ * twelve weeks of market trips, four past weeks of meals, and Grace's pay.
+ * Added once, also to a demo home made before these existed.
+ */
+function demoExtras() {
+  const a = me();
+  const h = myHome();
+  if (a?.email !== DEMO_EMAIL || !h || h.extras) return;
+  const day = (n) => new Date(Date.now() - n * 864e5).toISOString();
+  const onDay = (monthsAgo, date) => {
+    const d = new Date();
+    return new Date(d.getFullYear(), d.getMonth() - monthsAgo, date, 10).toISOString();
+  };
+  const recipes = db.get("recipes").filter((r) => r.status === "published");
+  withHome((x) => {
+    x.extras = 1;
+    x.budget = {
+      monthly: 650000,
+      trips: Array.from({ length: 12 }, (_, i) => {
+        const estimate = 118000 + ((i * 7919) % 41) * 1000;
+        return { id: newId("trip"), date: day(i * 7 + 2), estimate, actual: Math.round((estimate * (94 + ((i * 37) % 17))) / 100 / 500) * 500, items: 14 + (i % 6) };
+      }),
+    };
+    x.planHistory = [4, 3, 2, 1].map((w) => ({ weekOf: day(w * 7), days: planAll(recipes, { seed: 1000 + w, premium: false, allergies: [] }) }));
+    x.staff = [
+      {
+        id: newId("staff"),
+        name: "Grace",
+        role: "House help",
+        salary: 250000,
+        payday: 28,
+        startedOn: onDay(8, 1),
+        entries: [
+          { id: newId("pay"), date: onDay(2, 28), kind: "pay", amount: 250000, note: "" },
+          { id: newId("pay"), date: onDay(1, 12), kind: "leave", days: 2, note: "Visiting family in Masaka" },
+          { id: newId("pay"), date: onDay(1, 18), kind: "advance", amount: 40000, note: "School fees" },
+          { id: newId("pay"), date: onDay(1, 28), kind: "pay", amount: 210000, note: "" },
+          { id: newId("pay"), date: onDay(0, 6), kind: "advance", amount: 50000, note: "Transport home" },
+        ],
+      },
+    ];
+  });
+}
+
 const myHomeOf = (accountId) => home.get().accounts.find((a) => a.id === accountId)?.householdId;
 
 // ── The household ─────────────────────────────────────────────
@@ -278,7 +323,36 @@ export const planApi = {
   get: () => (DEMO ? reply(myHome()?.plan ?? null) : api(R.mealPlan)),
   save(plan) {
     if (!DEMO) return api(R.mealPlan, { method: "PUT", body: plan });
-    return reply(withHome((x) => (x.plan = plan)).plan);
+    // The week being replaced is kept (the last 12), for eating trends. The server does the same.
+    return reply(
+      withHome((x) => {
+        if (x.plan?.days) x.planHistory = [...(x.planHistory ?? []), { weekOf: x.plan.createdAt, days: x.plan.days }].slice(-12);
+        x.plan = plan;
+      }).plan,
+    );
+  },
+};
+
+/** Past weeks, oldest first: [{ weekOf, days }]. */
+export const planHistoryApi = {
+  get: () => (DEMO ? (demoExtras(), reply(myHome()?.planHistory ?? [])) : api(R.planHistory)),
+};
+
+/** The food budget and market trips: { monthly, trips: [{ id, date, estimate, actual, items }] }. */
+export const budgetApi = {
+  get: () => (DEMO ? (demoExtras(), reply(myHome()?.budget ?? { monthly: null, trips: [] })) : api(R.budget)),
+  save(budget) {
+    if (!DEMO) return api(R.budget, { method: "PUT", body: budget });
+    return reply(withHome((x) => (x.budget = budget)).budget, 60);
+  },
+};
+
+/** Who helps at home and their pay: [{ id, name, role, salary, payday, startedOn, entries: [{ id, date, kind, amount, days, note }] }]. */
+export const staffApi = {
+  get: () => (DEMO ? (demoExtras(), reply(myHome()?.staff ?? [])) : api(R.staff)),
+  save(staff) {
+    if (!DEMO) return api(R.staff, { method: "PUT", body: staff });
+    return reply(withHome((x) => (x.staff = staff)).staff, 60);
   },
 };
 

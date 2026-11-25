@@ -23,6 +23,7 @@ export const Shop = lazy(() => import("./pages/6.shop/shop"));
 // Beyond the tabs
 export const HouseHelp = lazy(() => import("./pages/7.house-help/house-help"));
 export const Premium = lazy(() => import("./pages/8.premium/premium"));
+export const Insights = lazy(() => import("./pages/10.insights/insights"));
 export const You = lazy(() => import("./pages/9.you/you"));
 export const HouseholdPage = lazy(() => import("./pages/9.you/household"));
 export const SettingsPage = lazy(() => import("./pages/9.you/settings"));

@@ -1,5 +1,5 @@
 /* Client Layout */
-import { Crown, HandHeart, Sparkles, Sun, CookingPot, ShoppingBasket, UserRound, Wrench } from "lucide-react";
+import { ChartColumn, Crown, HandHeart, Sparkles, Sun, CookingPot, ShoppingBasket, UserRound, Wrench } from "lucide-react";
 import { Outlet, NavLink, Link } from "react-router-dom";
 
 import AnimatedLogo from "@/components/brand/AnimatedLogo";
@@ -14,6 +14,7 @@ const TABS = [
   { to: "/app/shop", label: "Shop", icon: ShoppingBasket },
 ];
 const MORE = [
+  { to: "/app/insights", label: "Insights", icon: ChartColumn },
   { to: "/app/house-help", label: "House Help", icon: HandHeart },
   { to: "/app/you", label: "You", icon: UserRound },
 ];
@@ -58,7 +59,7 @@ export default function ClientLayout() {
             <Crown className="size-5 text-amber-800" aria-hidden="true" />
             <span className="text-sm">
               <span className="block font-semibold text-amber-800">Get Premium</span>
-              <span className="text-ink-2">House Help, sharing, no ads</span>
+              <span className="text-ink-2">Budget, House Help, sharing, no ads</span>
             </span>
           </Link>
         )}
