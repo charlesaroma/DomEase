@@ -1,5 +1,5 @@
 /* Premium */
-import { ArrowLeft, Check, Crown, LoaderCircle, Smartphone } from "lucide-react";
+import { ArrowLeft, Check, Clock, Crown, LoaderCircle, Smartphone } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -61,21 +61,25 @@ export default function Premium() {
     );
   }
 
-  return (
-    <Screen back="/app" eyebrow="DomEase Premium" title="Get the whole of DomEase">
-      <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
-        <FeatureList features={features} />
+  const providerLabel = PROVIDERS.find((p) => p.id === provider).label;
+  const wrongNetwork = validPhone && !PROVIDERS.find((p) => p.id === provider).prefix.some((x) => digits.startsWith(x));
 
-        <section className="h-fit rounded-r-stage bg-white p-5 shadow-sh-2 lg:sticky lg:top-8">
+  return (
+    <Screen wide back="/app" eyebrow="DomEase Premium" title="Get the whole of DomEase">
+      <p className="-mt-3 mb-8 max-w-xl text-ink-2 md:text-lg">One plan covers everyone at home. Pay with MTN or Airtel Mobile Money and stop any time.</p>
+
+      {/* Checkout first on a phone; on the right from a tablet up, beside what you get */}
+      <div className="grid items-start gap-8 md:grid-cols-[minmax(0,1fr)_340px] lg:grid-cols-[minmax(0,1fr)_380px] xl:gap-12">
+        <section aria-label="Pay for Premium" className="rounded-r-stage bg-white p-5 shadow-sh-2 sm:p-6 md:sticky md:top-8 md:order-last">
           {/* Steps */}
-          <ol className="mb-5 flex items-center gap-2 text-xs" aria-label="Steps">
+          <ol className="mb-6 flex items-center gap-2 text-xs" aria-label="Steps">
             {STEPS.map((s, i) => (
-              <li key={s} className="flex flex-1 items-center gap-2" aria-current={i === step ? "step" : undefined}>
-                <span className={cn("grid size-6 shrink-0 place-items-center rounded-full font-semibold", i < step ? "bg-clay-700 text-white" : i === step ? "bg-clay-700 text-white ring-4 ring-clay-100" : "bg-paper-2 text-ink-2")}>
+              <li key={s} className={cn("flex items-center gap-2", i < STEPS.length - 1 && "flex-1")} aria-current={i === step ? "step" : undefined}>
+                <span className={cn("grid size-6 shrink-0 place-items-center rounded-full font-semibold", i <= step ? "bg-clay-700 text-white" : "bg-paper-2 text-ink-2", i === step && "ring-4 ring-clay-100")}>
                   {i < step ? <Check className="size-3.5" strokeWidth={3} /> : i + 1}
                 </span>
-                <span className={cn("hidden truncate sm:inline", i === step ? "font-semibold" : "text-ink-2")}>{s}</span>
-                {i < STEPS.length - 1 && <span className={cn("h-0.5 flex-1 rounded-full", i < step ? "bg-clay-700" : "bg-line")} />}
+                <span className={cn("font-semibold whitespace-nowrap", i !== step && "sr-only")}>{s}</span>
+                {i < STEPS.length - 1 && <span className={cn("h-0.5 min-w-3 flex-1 rounded-full", i < step ? "bg-clay-700" : "bg-line")} />}
               </li>
             ))}
           </ol>
@@ -83,74 +87,95 @@ export default function Premium() {
           {step === 0 && (
             <div className="space-y-3">
               {[
-                ["yearly", "Yearly", "Best value"],
+                ["yearly", "Yearly", "Billed once a year", "Best value"],
                 ["monthly", "Monthly", "Stop any time"],
-              ].map(([id, label, note]) => (
+              ].map(([id, label, note, badge]) => (
                 <button
                   key={id}
                   type="button"
                   onClick={() => setPlan(id)}
                   aria-pressed={plan === id}
-                  className={cn("flex w-full items-center justify-between rounded-r-card border-2 p-4 text-left", plan === id ? "border-clay-700 bg-clay-100/40" : "border-line")}
+                  className={cn(
+                    "flex w-full items-center gap-3 rounded-r-card border-2 p-4 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-700",
+                    plan === id ? "border-clay-700 bg-clay-100/40" : "border-line hover:border-line-2",
+                  )}
                 >
-                  <span>
-                    <span className="block font-semibold">{label}</span>
-                    <span className="text-sm text-ink-2">{note}</span>
+                  <span className={cn("grid size-5 shrink-0 place-items-center rounded-full border-2", plan === id ? "border-clay-700" : "border-line-2")} aria-hidden="true">
+                    {plan === id && <span className="size-2.5 rounded-full bg-clay-700" />}
                   </span>
-                  <span className="font-display text-lg font-bold">{prices[id] != null ? money(prices[id]) : "Price at launch"}</span>
+                  <span className="min-w-0 flex-1">
+                    <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                      <span className="font-semibold">{label}</span>
+                      {badge && <span className="rounded-r-pill bg-amber-200/70 px-2 py-0.5 text-[11px] font-semibold whitespace-nowrap text-amber-800">{badge}</span>}
+                    </span>
+                    <span className="block text-sm text-ink-2">{note}</span>
+                  </span>
+                  {prices[id] != null ? (
+                    <span className="shrink-0 font-display text-lg font-bold">{money(prices[id])}</span>
+                  ) : (
+                    <span className="shrink-0 text-right text-xs leading-tight text-ink-3">
+                      Price
+                      <br />
+                      at launch
+                    </span>
+                  )}
                 </button>
               ))}
-              <Button className="w-full" onClick={() => setStep(1)}>
+              <Button className="mt-2 w-full" onClick={() => setStep(1)}>
                 Continue
               </Button>
             </div>
           )}
 
           {step === 1 && (
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-2">
-                {PROVIDERS.map((p) => (
-                  <button
-                    key={p.id}
-                    type="button"
-                    onClick={() => setProvider(p.id)}
-                    aria-pressed={provider === p.id}
-                    className={cn("rounded-r-md border-2 px-3 py-3 text-sm font-medium", provider === p.id ? "border-clay-700 bg-clay-100/40" : "border-line")}
-                  >
-                    {p.label}
-                  </button>
-                ))}
-              </div>
+            <div className="space-y-5">
+              <fieldset>
+                <legend className="mb-1.5 text-sm font-medium">Pay with</legend>
+                <div className="grid grid-cols-2 gap-2">
+                  {PROVIDERS.map((p) => (
+                    <button
+                      key={p.id}
+                      type="button"
+                      onClick={() => setProvider(p.id)}
+                      aria-pressed={provider === p.id}
+                      className={cn(
+                        "min-h-12 rounded-r-md border-2 px-3 py-2 text-sm leading-tight font-medium transition-colors",
+                        provider === p.id ? "border-clay-700 bg-clay-100/40 text-clay-800" : "border-line hover:border-line-2",
+                      )}
+                    >
+                      {p.label}
+                    </button>
+                  ))}
+                </div>
+              </fieldset>
               <label className="block">
                 <span className="mb-1.5 block text-sm font-medium">Mobile money number</span>
-                <span className="flex items-center rounded-r-md border border-line focus-within:border-clay-700">
-                  <span className="pl-3.5 text-ink-2">+256</span>
+                <span className="flex items-center rounded-r-md border border-line bg-white transition-shadow focus-within:border-clay-700 focus-within:ring-2 focus-within:ring-clay-100">
+                  <span className="border-r border-line py-1 pr-3 pl-3.5 text-ink-2">+256</span>
                   <input
                     inputMode="tel"
                     autoComplete="tel-national"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="7XX XXX XXX"
-                    className="h-12 min-w-0 flex-1 bg-transparent px-2 text-base outline-none"
+                    className="h-12 min-w-0 flex-1 bg-transparent px-3 text-base outline-none"
                   />
                 </span>
-                {validPhone && !PROVIDERS.find((p) => p.id === provider).prefix.some((x) => digits.startsWith(x)) && (
-                  <span className="mt-1 block text-xs text-amber-800">That looks like a different network. Check it is your {PROVIDERS.find((p) => p.id === provider).label} number.</span>
-                )}
+                {wrongNetwork && <span className="mt-1.5 block text-xs text-amber-800">That looks like a different network. Check it is your {providerLabel} number.</span>}
               </label>
               <div className="flex gap-2">
-                <Button variant="ghost" onClick={() => setStep(0)} aria-label="Back">
+                <Button variant="ghost" className="w-11 shrink-0 px-0" onClick={() => setStep(0)} aria-label="Back to plans">
                   <ArrowLeft className="size-4" />
                 </Button>
                 <Button className="flex-1" disabled={!validPhone} onClick={() => (setStep(2), checkout.mutate({ plan, provider, phone: `+256${digits}` }))}>
-                  Pay {prices[plan] != null ? money(prices[plan]) : ""}
+                  {prices[plan] != null ? `Pay ${money(prices[plan])}` : "Pay now"}
                 </Button>
               </div>
             </div>
           )}
 
           {step === 2 && (
-            <div className="py-4 text-center">
+            <div className="py-4 text-center" aria-live="polite">
               {checkout.isError ? (
                 <>
                   <p className="font-semibold text-danger">That didn't go through.</p>
@@ -166,39 +191,55 @@ export default function Premium() {
                     <LoaderCircle className="absolute size-16 animate-spin text-clay-400" strokeWidth={1} />
                   </span>
                   <p className="mt-4 font-semibold">Check your phone</p>
-                  <p className="mt-1 text-sm text-ink-2">Approve the {PROVIDERS.find((p) => p.id === provider).label} prompt on +256 {digits} with your PIN. DomEase never sees it.</p>
+                  <p className="mx-auto mt-1 max-w-xs text-sm text-ink-2">
+                    Approve the {providerLabel} prompt on <span className="whitespace-nowrap">+256 {digits}</span> with your PIN. DomEase never sees it.
+                  </p>
                 </>
               )}
             </div>
           )}
-          <p className="mt-5 text-xs text-ink-3">
+
+          <p className="mt-5 border-t border-line pt-4 text-xs text-ink-3">
             See the{" "}
-            <Link to="/premium-terms" className="underline">
+            <Link to="/premium-terms" className="underline hover:text-ink-2">
               Premium terms
             </Link>
             . Stop any time from You → Premium.
           </p>
         </section>
+
+        <FeatureList features={features} />
       </div>
     </Screen>
   );
 }
 
+/** What Premium includes, then what is on the way, as one list each. */
 function FeatureList({ features }) {
+  const groups = [
+    ["What's included", features.filter((f) => !f.comingSoon)],
+    ["On the way", features.filter((f) => f.comingSoon)],
+  ].filter(([, list]) => list.length);
   return (
-    <ul className="grid gap-3 sm:grid-cols-2">
-      {features.map((f) => (
-        <li key={f.id} className="flex gap-3 rounded-r-card bg-white p-4 shadow-sh-1">
-          <Crown className="mt-0.5 size-5 shrink-0 text-amber-700" aria-hidden="true" />
-          <span>
-            <span className="block font-semibold">
-              {f.title}
-              {f.comingSoon && <span className="ml-2 rounded-r-pill bg-paper-2 px-2 py-0.5 text-xs font-normal text-ink-2">Coming soon</span>}
-            </span>
-            <span className="text-sm text-ink-2">{f.description}</span>
-          </span>
-        </li>
+    <div className="space-y-6">
+      {groups.map(([heading, list], g) => (
+        <section key={heading} aria-label={heading}>
+          <h2 className="mb-3 font-display text-lg font-semibold">{heading}</h2>
+          <ul className="grid rounded-r-card bg-white px-4 shadow-sh-1 sm:px-5">
+            {list.map((f) => (
+              <li key={f.id} className="flex gap-3 border-b border-line py-4 last:border-b-0">
+                <span className={cn("grid size-9 shrink-0 place-items-center rounded-full", g === 0 ? "bg-amber-200/60 text-amber-800" : "bg-paper-2 text-ink-2")}>
+                  {g === 0 ? <Crown className="size-4" aria-hidden="true" /> : <Clock className="size-4" aria-hidden="true" />}
+                </span>
+                <span className="min-w-0 pt-0.5">
+                  <span className="block font-semibold leading-snug">{f.title}</span>
+                  <span className="mt-0.5 block text-sm text-ink-2">{f.description}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
       ))}
-    </ul>
+    </div>
   );
 }
