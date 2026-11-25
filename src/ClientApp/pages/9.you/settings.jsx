@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 import { useHousehold, useUpdateHousehold } from "@/store/queries/app";
+import { cn } from "@/utils/cn";
 
 import Screen from "../../components/Screen";
 import { useToast } from "../../components/Toast";
@@ -67,11 +68,23 @@ export default function SettingsPage() {
         <ul className="mt-2 divide-y divide-line">
           {REMINDERS.map(([k, label, note]) => (
             <li key={k} className="flex items-center justify-between gap-4 py-3">
-              <span>
+              <span className="min-w-0">
                 <span className="block">{label}</span>
                 <span className="text-sm text-ink-2">{note}</span>
               </span>
-              <input type="checkbox" role="switch" checked={!!prefs[k]} onChange={() => flip(k)} className="size-5 accent-clay-700" aria-label={label} />
+              <button
+                type="button"
+                role="switch"
+                aria-checked={!!prefs[k]}
+                aria-label={label}
+                onClick={() => flip(k)}
+                className={cn(
+                  "relative h-7 w-12 shrink-0 rounded-full transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-700",
+                  prefs[k] ? "bg-clay-700" : "bg-line-2",
+                )}
+              >
+                <span className={cn("absolute top-1 left-1 size-5 rounded-full bg-white shadow-sh-1 transition-transform", prefs[k] && "translate-x-5")} />
+              </button>
             </li>
           ))}
         </ul>

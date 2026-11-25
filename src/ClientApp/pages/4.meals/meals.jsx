@@ -68,27 +68,31 @@ export default function Meals() {
 
       {/* The week */}
       {loading ? (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           {Array.from({ length: 7 }, (_, i) => (
-            <div key={i} className="aspect-[4/5] animate-pulse rounded-r-card bg-paper-2" />
+            <div key={i} className="h-24 animate-pulse sm:h-auto sm:aspect-[4/5] rounded-r-card bg-paper-2" />
           ))}
         </div>
       ) : week.length ? (
-        <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <ol className="grid gap-3 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">
           {week.map((id, d) => {
             const r = byId[id];
             if (!r) return null;
             return (
               <li key={d}>
-                <Link to={`/app/meals/${r.id}`} className={cn("group block overflow-hidden rounded-r-card bg-white shadow-sh-1 hover:shadow-sh-2", d === today && "ring-2 ring-clay-700")}>
-                  <div className="relative overflow-hidden">
-                    <RecipePhoto recipe={r} className="aspect-[4/3] w-full transition-transform duration-500 group-hover:scale-[1.03]" iconClassName="size-10" eager={d < 4} />
-                    <span className={cn("absolute top-2.5 left-2.5 rounded-r-pill px-2.5 py-0.5 text-xs font-semibold", d === today ? "bg-clay-700 text-white" : "bg-white/90 text-ink")}>
+                <Link
+                  to={`/app/meals/${r.id}`}
+                  className={cn("group flex h-full overflow-hidden rounded-r-card bg-white shadow-sh-1 hover:shadow-sh-2 sm:block", d === today && "ring-2 ring-clay-700")}
+                >
+                  <div className="relative w-28 shrink-0 overflow-hidden sm:w-auto">
+                    <RecipePhoto recipe={r} className="h-full min-h-24 w-full transition-transform duration-500 group-hover:scale-[1.03] sm:aspect-[4/3] sm:h-auto" iconClassName="size-8 sm:size-10" eager={d < 4} />
+                    <span className={cn("absolute top-2 left-2 hidden rounded-r-pill px-2.5 py-0.5 text-xs font-semibold sm:block", d === today ? "bg-clay-700 text-white" : "bg-white/90 text-ink")}>
                       {d === today ? "Today" : DAYS[d]}
                     </span>
                   </div>
-                  <div className="p-4">
-                    <p className="line-clamp-2 font-display text-lg leading-snug font-semibold">{r.name}</p>
+                  <div className="min-w-0 flex-1 self-center p-4">
+                    <p className={cn("mb-0.5 text-xs font-semibold tracking-wide uppercase sm:hidden", d === today ? "text-clay-700" : "text-ink-3")}>{d === today ? "Today" : DAYS[d]}</p>
+                    <p className="line-clamp-2 font-display text-base leading-snug font-semibold sm:text-lg">{r.name}</p>
                     <p className="mt-1 text-sm text-ink-2">
                       {r.cuisine}
                       {totalMinutes(r) > 0 && ` · ${totalMinutes(r)} min`}

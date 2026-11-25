@@ -24,17 +24,17 @@ export default function HouseholdPage() {
 
   return (
     <Screen back="/app/you" eyebrow={HOUSEHOLD_LABEL[h.type]} title={h.name}>
-      <section className="flex items-center justify-between rounded-r-card bg-white p-5 shadow-sh-1">
-        <span>
+      <section className="flex items-center justify-between gap-3 rounded-r-card bg-white p-5 shadow-sh-1">
+        <span className="min-w-0 flex-1">
           <span className="block font-semibold">People eating at home</span>
           <span className="text-sm text-ink-2">Every recipe is scaled to this</span>
         </span>
-        <span className="flex items-center gap-3">
-          <button type="button" aria-label="Fewer" disabled={h.size <= 1} onClick={() => update.mutate({ size: h.size - 1 })} className="grid size-10 place-items-center rounded-full border border-line disabled:opacity-40">
+        <span className="flex shrink-0 items-center gap-2">
+          <button type="button" aria-label="Fewer" disabled={h.size <= 1} onClick={() => update.mutate({ size: h.size - 1 })} className="grid size-9 place-items-center rounded-full border border-line hover:border-clay-700 disabled:opacity-40 sm:size-10">
             <Minus className="size-4" />
           </button>
-          <span className="w-8 text-center font-display text-2xl font-bold tabular-nums">{h.size}</span>
-          <button type="button" aria-label="More" disabled={h.size >= 20} onClick={() => update.mutate({ size: h.size + 1 })} className="grid size-10 place-items-center rounded-full border border-line disabled:opacity-40">
+          <span className="w-7 text-center font-display text-2xl font-bold tabular-nums">{h.size}</span>
+          <button type="button" aria-label="More" disabled={h.size >= 20} onClick={() => update.mutate({ size: h.size + 1 })} className="grid size-9 place-items-center rounded-full border border-line hover:border-clay-700 disabled:opacity-40 sm:size-10">
             <Plus className="size-4" />
           </button>
         </span>

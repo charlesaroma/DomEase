@@ -41,13 +41,13 @@ export default function You() {
 
   return (
     <Screen title="You">
-      <section className="flex items-center gap-4 rounded-r-stage bg-white p-5 shadow-sh-1">
-        <span className="grid size-14 place-items-center rounded-full bg-sage-100 font-display text-2xl font-bold text-sage-800">{user?.name?.[0]}</span>
+      <section className="flex items-center gap-4 rounded-r-stage bg-white p-4 shadow-sh-1 sm:p-5">
+        <span className="grid size-12 shrink-0 place-items-center rounded-full sm:size-14 bg-sage-100 font-display text-2xl font-bold text-sage-800">{user?.name?.[0]}</span>
         <div className="min-w-0 flex-1">
-          <p className="truncate font-display text-xl font-semibold">{user?.name}</p>
-          <p className="truncate text-ink-2">{user?.email ?? user?.phone}</p>
+          <p className="font-display text-lg leading-snug font-semibold [overflow-wrap:anywhere] sm:text-xl">{user?.name}</p>
+          <p className="text-sm text-ink-2 [overflow-wrap:anywhere] sm:text-base">{user?.email ?? user?.phone}</p>
         </div>
-        <Button variant="ghost" onClick={() => setEditing(true)}>
+        <Button variant="ghost" className="h-9 shrink-0 px-4 text-sm" onClick={() => setEditing(true)}>
           Edit
         </Button>
       </section>
@@ -57,10 +57,10 @@ export default function You() {
           {g.map(([label, to, Icon, note]) => (
             <li key={to}>
               <Link to={to} className="flex items-center gap-4 px-5 py-4 hover:bg-paper">
-                <Icon className="size-5 text-clay-700" aria-hidden="true" />
-                <span className="flex-1">{label}</span>
-                {note && <span className="text-sm text-ink-2">{note}</span>}
-                <ChevronRight className="size-4 text-ink-3" />
+                <Icon className="size-5 shrink-0 text-clay-700" aria-hidden="true" />
+                <span className="min-w-0 flex-1">{label}</span>
+                {note && <span className="max-w-[45%] truncate text-right text-sm text-ink-2">{note}</span>}
+                <ChevronRight className="size-4 shrink-0 text-ink-3" aria-hidden="true" />
               </Link>
             </li>
           ))}

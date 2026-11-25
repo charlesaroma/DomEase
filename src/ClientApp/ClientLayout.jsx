@@ -13,14 +13,15 @@ const TABS = [
   { to: "/app/clean", label: "Clean", icon: Sparkles },
   { to: "/app/shop", label: "Shop", icon: ShoppingBasket },
 ];
+const YOU = { to: "/app/you", label: "You", icon: UserRound };
 const MORE = [
   { to: "/app/insights", label: "Insights", icon: ChartColumn },
   { to: "/app/house-help", label: "House Help", icon: HandHeart },
-  { to: "/app/you", label: "You", icon: UserRound },
+  YOU,
 ];
 
 /**
- * The web app's frame, as on the phone: four tabs along the bottom on a small
+ * The web app's frame, as on the phone: five tabs along the bottom on a small
  * screen, a rail down the side on a large one. Maintenance mode (Settings in
  * the admin) replaces everything with its message.
  */
@@ -78,14 +79,14 @@ export default function ClientLayout() {
 
       {/* Tab bar, small screens */}
       <nav
-        className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-4 border-t border-line bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden"
+        className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-5 border-t border-line bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden"
         aria-label="Main"
       >
-        {TABS.map((t) => (
-          <NavLink key={t.to} to={t.to} end={t.end} className="flex flex-col items-center gap-1 py-2.5 text-xs">
+        {[...TABS, YOU].map((t) => (
+          <NavLink key={t.to} to={t.to} end={t.end} className="flex min-w-0 flex-col items-center gap-1 py-2 text-[11px] sm:text-xs">
             {({ isActive }) => (
               <>
-                <span className={cn("grid h-8 w-14 place-items-center rounded-r-pill transition-colors", isActive ? "bg-clay-100 text-clay-700" : "text-ink-2")}>
+                <span className={cn("grid h-8 w-12 place-items-center sm:w-14 rounded-r-pill transition-colors", isActive ? "bg-clay-100 text-clay-700" : "text-ink-2")}>
                   <t.icon className="size-5" strokeWidth={isActive ? 2.25 : 1.75} aria-hidden="true" />
                 </span>
                 <span className={isActive ? "font-semibold text-clay-700" : "text-ink-2"}>{t.label}</span>

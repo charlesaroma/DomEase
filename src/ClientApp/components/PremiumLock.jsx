@@ -12,10 +12,10 @@ export default function PremiumLock({ locked, title, body, children, className }
   if (!locked) return children;
   return (
     <section className={cn("relative min-h-64 overflow-hidden rounded-r-card border border-amber-200 bg-white", className)} aria-label={`${title}, Premium`}>
-      <div className="pointer-events-none select-none blur-[3px]" aria-hidden="true" inert>
+      <div className="pointer-events-none max-h-[26rem] overflow-hidden select-none blur-[3px]" aria-hidden="true" inert>
         {children}
       </div>
-      <div className="absolute inset-0 grid place-items-center bg-white/60 p-6 text-center">
+      <div className="absolute inset-0 grid place-items-center bg-gradient-to-b from-white/50 via-white/75 to-white/95 p-6 text-center">
         <div className="max-w-xs">
           <span className="mx-auto grid size-11 place-items-center rounded-full bg-amber-200/70 text-amber-800">
             <Crown className="size-5" aria-hidden="true" />
